@@ -6,5 +6,6 @@ namespace MidtermProject.Classes
 {
     class Validation
     {
+        // this will be our validate class
     }
 }
