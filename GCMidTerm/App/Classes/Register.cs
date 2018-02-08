@@ -7,22 +7,17 @@ namespace MidtermProject.Classes
     class Register
     {
 
-        public void CheckPaymentType();
+        public void CheckPaymentType()
         {
         }
-
-    public void CalculateSalesTax();
+        public void CalculateSalesTax()
         {
         }
-
-public void GetSubTotal()
-{
-}
-public void GetGrandTotal()
-{
-
-}
-
-
+        public void GetSubTotal()
+        {
+        }
+        public void GetGrandTotal()
+        {
+        }
     }
 }
