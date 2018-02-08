@@ -12,6 +12,8 @@ namespace MidtermProject.Interfaces
     {
         // needs hold payment types cash, check, cc, virtual (applepay, paypal etc)
 
+        void Amount();
+
 
     }
 }
