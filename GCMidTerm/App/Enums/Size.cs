@@ -4,9 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MidtermProject.App.Enums
+namespace MidtermProject.Enums
 {
-    class Size
+    public enum Size
     {
+        small = 1,
+        medium,
+        large
     }
 }
