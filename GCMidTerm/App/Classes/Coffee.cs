@@ -18,15 +18,14 @@ namespace MidtermProject.Classes
         public int Quantity { get; set; }
 
         //new unique fields for Coffee.cs
-        public string Flavor { get; set; }
-        public string Size { get; set; }
-        public string DairyChoice { get; set; }
-        public int AddEspresso { get; set; }
-        public string CoffeeType { get; set; }
+        public Flavors Flavor { get; set; }
+        public Sizes Size { get; set; }
+        public Dairy DairyChoice { get; set; }
+        public int EspressoAmount { get; set; }
 
         //constructor: giving value to our properties
         public Coffee(string _productName, string _description, double _price, int _quantity,
-            string _flavor, string _size, string _dairyChoice, int _addEspresso, string _coffeeType)
+            Flavors _flavor, Sizes _size, Dairy _dairyChoice, int _espressoAmount)
         {
             ProductName = _productName;
             Description = _description;
@@ -35,8 +34,9 @@ namespace MidtermProject.Classes
             Flavor = _flavor;
             Size = _size;
             DairyChoice = _dairyChoice;
-            AddEspresso = _addEspresso;
-            CoffeeType = _coffeeType;
+            EspressoAmount = _espressoAmount;
         }
+
+
     }
 }
