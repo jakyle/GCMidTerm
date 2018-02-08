@@ -11,6 +11,10 @@ namespace MidtermProject.Enums
     public enum CreditCardType
     {
         // this holds the credit card types 
-        // MC, Visa, etc
-    }
+
+        Mastercard = 1,
+        Visa,
+        AmEx,
+    };
+
 }
