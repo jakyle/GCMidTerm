@@ -11,6 +11,9 @@ namespace MidtermProject.Classes
     class PmtCheck : IPayments
     {
         //will hold check number, check amount, routing number, account number
-
+        public void Amount()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
