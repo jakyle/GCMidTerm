@@ -8,11 +8,14 @@ using MidtermProject.Classes;
 
 namespace MidtermProject.Enums
 {
-   
     public enum Flavors
     {
-        //this will hold all the flavors of coffee (vanilla, black, etc)
-
-
+        vanilla = 1,
+        matcha,
+        caramel,
+        chocolate,
+        whiteChocolate,
+        seaSalt,
+        peppermint,
     }
 }
