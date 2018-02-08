@@ -11,6 +11,7 @@ namespace MidtermProject.Enums
     public enum StoreMenu
     {
         //this will list all the items for the menu
+
     }
     public enum Coffee
     {
