@@ -14,5 +14,11 @@ namespace MidtermProject.Interfaces
         //this is where the coffee will implement from (all products will be based on this class)
         //description, price, qty
 
+        void Description();
+        void Price();
+        void Quantity();
+        void ProductName();
+
+
     }
 }
