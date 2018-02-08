@@ -10,9 +10,9 @@ namespace MidtermProject.Interfaces
 {
     interface IPayments
     {
-        // needs hold payment types cash, check, cc, virtual (applepay, paypal etc)
-
-        void Amount();
+        double Amount { get; set; }
+        // only common denominator.
+        
 
 
     }

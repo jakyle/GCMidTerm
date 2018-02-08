@@ -8,8 +8,13 @@ using MidtermProject.Classes;
 
 namespace MidtermProject.Classes
 {
-    class PmtCreditCard: IPayments
+    class PmtCreditCard : IPayments
     {
-        //will hold cc type (cctype enum), amount, account number
+
+        //will hold cc type (cctype enum), amount, account number.
+        public void Amount()
+        {
+            
+        }
     }
 }
