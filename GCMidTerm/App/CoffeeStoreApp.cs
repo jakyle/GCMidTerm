@@ -5,6 +5,7 @@ using System.Text;
 using MidtermProject.Interfaces;
 using MidtermProject.Enums;
 using MidtermProject.Classes;
+using MidtermProject.Utility;
 
 namespace MidtermProject.Classes
 {

@@ -10,5 +10,9 @@ namespace MidtermProject.Interfaces
 {
     interface IApp
     {
+        bool IsRunning { get; set; }
+
+        void Run();
+        void Stop();
     }
 }

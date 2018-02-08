@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace MidtermProject
+namespace MidtermProject.Utilities
 {
     class Validation
     {
-        // this will be our validate class
     }
 }
