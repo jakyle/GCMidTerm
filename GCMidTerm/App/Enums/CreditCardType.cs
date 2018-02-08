@@ -12,9 +12,9 @@ namespace MidtermProject.Enums
     {
         // this holds the credit card types 
 
-        Mastercard = 1,
-        Visa,
-        AmEx,
+        mastercard = 1,
+        visa,
+        amex,
     };
 
 }
