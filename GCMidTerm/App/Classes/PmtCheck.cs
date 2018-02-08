@@ -10,10 +10,11 @@ namespace MidtermProject.Classes
 {
     class PmtCheck : IPayments
     {
+        double IPayments.Amount { get; set; }
+        public long AccountNumber { get; set; } 
+        long RountingNumber { get; set; }
+        int CheckNumber { get; set; }
+
         //will hold check number, check amount, routing number, account number
-        public void Amount()
-        {
-            throw new NotImplementedException();
-        }
     }
 }
