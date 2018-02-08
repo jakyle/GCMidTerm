@@ -17,6 +17,18 @@ namespace MidtermProject.Classes
         public DateTime Exp { get; set; }
         public string Name { get; set; }
 
+        public PmtCreditCard(double amount, long ccNumber,int securityNum,DateTime exp,string name)
+        {
+            Amount = amount;
+            CCNumber = ccNumber;
+            SecurityNum = securityNum;
+            Exp = exp;
+            Name = name;
+
+
+
+        }
+
 
 
 
