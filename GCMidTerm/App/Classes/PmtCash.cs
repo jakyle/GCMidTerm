@@ -10,7 +10,21 @@ namespace MidtermProject.Classes
 {
     class PmtCash : IPayments
     {
+        //holds the amount for cash transactions
 
-        //amount
+        //PROPERTIES
+        public double Amount
+        {
+            get;
+            set;
+
+        }
+
+        //METHODS
+
+        double IPayments.RecievePayments(Amount) 
+        {
+            
+        }
     }
 }
