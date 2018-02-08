@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace MidtermProject.Classes
+namespace MidtermProject
 {
     class Validation
     {

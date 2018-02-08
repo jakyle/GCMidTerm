@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{59487730-97D2-4261-A7F1-5CAA877FB626}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>GCMidTerm</RootNamespace>
-    <AssemblyName>GCMidTerm</AssemblyName>
+    <RootNamespace>MidtermProject</RootNamespace>
+    <AssemblyName>MidtermProject</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -42,6 +42,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App\Classes\Coffee.cs" />
+    <Compile Include="App\Classes\PmtCash.cs" />
+    <Compile Include="App\Classes\PmtCheck.cs" />
+    <Compile Include="App\Classes\PmtCreditCard.cs" />
+    <Compile Include="App\Classes\Register.cs" />
+    <Compile Include="App\CoffeeStoreApp.cs" />
+    <Compile Include="App\Enums\CreditCardType.cs" />
+    <Compile Include="App\Enums\Flavors.cs" />
+    <Compile Include="App\Enums\StoreMenu.cs" />
+    <Compile Include="App\Interfaces\IApp.cs" />
+    <Compile Include="App\Interfaces\IPayments.cs" />
+    <Compile Include="App\Interfaces\IProduct.cs" />
+    <Compile Include="App\Utilities\Validation.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
