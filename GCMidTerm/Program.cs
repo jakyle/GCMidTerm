@@ -11,18 +11,17 @@ namespace MidtermProject
 {
     class Program
     {
-        
+
         static void Main(string[] args)
-       
+
         {
             try
             {
                 //app goes here
-                double PmtCash = 2;
-                Console.WriteLine(PmtCash);
+                //calling the RUN method in CoffeeStoreApp class to run program
 
-
-
+                CoffeeStoreApp coffeeStore = new CoffeeStoreApp();
+                coffeeStore.Run();
 
             }
 

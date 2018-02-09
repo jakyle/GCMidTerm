@@ -25,7 +25,7 @@ namespace MidtermProject.Classes
             while (IsRunning == true)
             {
                 Console.WriteLine("Welcome to the grand circus coffee app! what would you like to do?");
-                PrintMenu();
+                AppMenuChoices(); //calling menu options
                 var input = (AppMenu)Enum.Parse(typeof(AppMenu), Console.ReadLine());
                 if (input == AppMenu.quit)
                 {
@@ -52,6 +52,17 @@ namespace MidtermProject.Classes
             foreach (StoreMenu Menu in Menus)
             {
                 Console.WriteLine($"[{(int)Menu}]. {Menu}");
+            }
+        }
+
+        private void AppMenuChoices()
+            //get values is getting enum values
+            //cast.appmenu is putting this into an array
+        {
+            var menuList = Enum.GetValues(typeof(AppMenu)).Cast<AppMenu>();
+            foreach (var item in menuList)
+            {
+                Console.WriteLine(item);
             }
         }
 
