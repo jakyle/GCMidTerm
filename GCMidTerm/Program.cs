@@ -18,8 +18,10 @@ namespace MidtermProject
             try
             {
                 //app goes here
+                double PmtCash = 2;
+                Console.WriteLine(PmtCash);
 
-                
+
 
 
             }

@@ -22,9 +22,13 @@ namespace MidtermProject.Classes
 
         //METHODS
 
-        double IPayments.RecievePayments(Amount) 
+
+        //CONSTRUCTORS
+        public PmtCash (double Amount)
         {
-            
+            this.Amount = Amount;
         }
+
+        
     }
 }

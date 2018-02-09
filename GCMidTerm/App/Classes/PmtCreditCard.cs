@@ -10,7 +10,8 @@ namespace MidtermProject.Classes
 {
     class PmtCreditCard : IPayments
     {
-        //will hold cc type (cctype enum), amount, account number.
+        //will hold cc type (cctype enum), amount, account number
+
         public double Amount { get; set; }
         public long CCNumber { get; set; }
         public int SecurityNum { get; set; }
