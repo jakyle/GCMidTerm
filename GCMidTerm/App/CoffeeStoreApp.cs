@@ -26,7 +26,7 @@ namespace MidtermProject.Classes
             {
                 Console.WriteLine("Welcome to the grand circus coffee app! what would you like to do?");
                 PrintMenu();
-                var input = Console.ReadLine();
+                var input = (AppMenu)Enum.Parse(typeof(AppMenu), Console.ReadLine());
                 if (input == AppMenu.quit)
                 {
                     Stop();
@@ -55,7 +55,7 @@ namespace MidtermProject.Classes
             }
         }
 
-        private void InputMenu()
+        private void InputMenu(AppMenu MenuChoice)
         {
             switch (MenuChoice)
             {
@@ -71,22 +71,37 @@ namespace MidtermProject.Classes
             }
         }
 
-        private void AddItem()
+        public void AddItem()
         {
-            // Take user input, user decides what item he wants to add
-            // item name,
-            // htne we will figure out the price
-            // we will ask the user the payment type
-            // then we wll figure out hte taxes,
-            // the grand total,
-            // etc etc.
+            // DisplayStoreItems();
+
+            var input = Console.ReadLine();
+            int quantity = int.Parse(Console.ReadLine());
+            if (Cart.Exists(item => item.Name == input))
+            {
+                if (Store.TryGetValue(input, out double value))
+                {
+                    // i don't like that im using soo many iterations to find inputs, does not seem very effective,
+                    // maybe like a O(n*2).. and i do mean n*2 since it seems like im doing a 
+                    // couple loops to do this. 
+                    int location = Cart.FindIndex(item => item.Name == input);
+                    double newVal = value * quantity;
+
+                    Cart[location].Quantity += quantity;
+                    Cart[location].Price += newVal;
+                }
+            }
+            else if (Store.TryGetValue(input, out double value))
+            {
+                Cart.Add(new StoreItem(input, value * quantity, quantity));
+            }
         }
 
         private void ViewCart()
         {
             foreach (IProduct item in Cart)
             {
-                Console.WriteLine($"");
+                Console.WriteLine($"{item}");
             }
         }
     }
