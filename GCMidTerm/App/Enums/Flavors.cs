@@ -8,6 +8,10 @@ using MidtermProject.Classes;
 
 namespace MidtermProject.Enums
 {
+
+    //commented this out..... for the sake of time i dont think its necessary.
+    //we already have our 12 menu coffee items (under "Enums / StoreMenu")
+
     //public enum Flavors
     //{
     //    vanilla = 1,

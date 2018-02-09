@@ -8,7 +8,7 @@ using MidtermProject.Classes;
 
 namespace MidtermProject.Classes
 {
-    class Coffee : IProduct //coffee is an implementation of IProducts
+    class CoffeeObj : IProduct //coffee is an implementation of IProducts
     {
         //FIELDS
         //these below have been implimented from iPayments
@@ -36,7 +36,7 @@ namespace MidtermProject.Classes
         //    DairyChoice = _dairyChoice;
         //    EspressoAmount = _espressoAmount;
         //}
-        public Coffee(string _productName, string _description, double _price)
+        public CoffeeObj(string _productName, string _description, double _price)
         {
             ProductName = _productName;
             Description = _description;

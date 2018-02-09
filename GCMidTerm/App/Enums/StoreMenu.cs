@@ -47,11 +47,21 @@ namespace MidtermProject.Enums
         Coffee pepperminthotchocolate = Coffee.PeppermintHotChocolate;
 
 
+        //creating coffee objects
+        CoffeeObj Black = new CoffeeObj(Coffee.Black.ToString(), "Fresh espresso with your choice of non-fat, regular, or soy milk", 3.50);
+        CoffeeObj Decaf = new CoffeeObj(Coffee.Decaf.ToString(), "Fresh espresso with your choice of non-fat, regular, or soy milk", 3.50);
+        CoffeeObj Latte = new CoffeeObj(Coffee.Latte.ToString(), "Fresh espresso with your choice of non-fat, regular, or soy milk", 3.50);
+        CoffeeObj VanillaLatte = new CoffeeObj(Coffee.VanillaLatte.ToString(), "Fresh espresso with your choice of non-fat, regular, or soy milk", 3.50);
+        CoffeeObj CaramelLatte = new CoffeeObj(Coffee.CaramelLatte.ToString(), "Fresh espresso with your choice of non-fat, regular, or soy milk", 3.50);
 
+        CoffeeObj Mocha = new CoffeeObj(Coffee.Mocha.ToString(), "Fresh espresso with your choice of non-fat, regular, or soy milk", 3.50);
+        CoffeeObj WhiteChocolateMocha = new CoffeeObj(Coffee.WhiteChocolateMocha.ToString(), "Fresh espresso with your choice of non-fat, regular, or soy milk", 3.50);
+        CoffeeObj PeppermintMocha = new CoffeeObj(Coffee.PeppermintMocha.ToString(), "Fresh espresso with your choice of non-fat, regular, or soy milk", 3.50);
+        CoffeeObj DoubleChocolateMocha = new CoffeeObj(Coffee.DoubleChocolateMocha.ToString(), "Fresh espresso with your choice of non-fat, regular, or soy milk", 3.50);
+        CoffeeObj DoubleHotChocolate = new CoffeeObj(Coffee.DoubleHotChocolate.ToString(), "Fresh espresso with your choice of non-fat, regular, or soy milk", 3.50);
+        CoffeeObj HotChocolate = new CoffeeObj(Coffee.HotChocolate.ToString(), "Fresh espresso with your choice of non-fat, regular, or soy milk", 3.50);
+        CoffeeObj PeppermintHotChocolate = new CoffeeObj(Coffee.PeppermintHotChocolate.ToString(), "Fresh espresso with your choice of non-fat, regular, or soy milk", 3.50);
 
-        //Coffee Latte = new Coffee("Latte", "Fresh espresso with your choice of non-fat, regular, or soy milk", 3.50);
-
-        //Coffee Mocha = new Coffee("Mocha", "Fresh espresso, cocoa, ground chocolate, topped with your choice of steamed non-fat, regular, or soy milk.", 3.50);
 
 
 
