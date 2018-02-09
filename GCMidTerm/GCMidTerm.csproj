@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App\Classes\Coffee.cs" />
+    <Compile Include="App\Classes\CoffeeMenu.cs" />
     <Compile Include="App\Classes\PmtCash.cs" />
     <Compile Include="App\Classes\PmtCheck.cs" />
     <Compile Include="App\Classes\PmtCreditCard.cs" />
@@ -63,9 +64,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="App\Classes\TextFile1.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
