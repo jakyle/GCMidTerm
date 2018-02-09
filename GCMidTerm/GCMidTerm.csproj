@@ -51,6 +51,7 @@
     <Compile Include="App\CoffeeStoreApp.cs" />
     <Compile Include="App\Enums\AppMenu.cs" />
     <Compile Include="App\Enums\CreditCardType.cs" />
+
     <Compile Include="App\Enums\StoreMenu.cs" />
     <Compile Include="App\Interfaces\IApp.cs" />
     <Compile Include="App\Interfaces\IPayments.cs" />

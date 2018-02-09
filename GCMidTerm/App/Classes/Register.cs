@@ -10,7 +10,7 @@ namespace MidtermProject.Classes
 {
     class Register
     {
-
+    
 
         //register must do the following:
         //tally each item chosen from the menu board
