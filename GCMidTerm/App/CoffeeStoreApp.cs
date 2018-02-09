@@ -71,31 +71,31 @@ namespace MidtermProject.Classes
             }
         }
 
-        public void AddItem()
-        {
-            // DisplayStoreItems();
+        //public void AddItem()
+        //{
+        //    // DisplayStoreItems();
 
-            var input = Console.ReadLine();
-            int quantity = int.Parse(Console.ReadLine());
-            if (Cart.Exists(item => item.Name == input))
-            {
-                if (Store.TryGetValue(input, out double value))
-                {
-                    // i don't like that im using soo many iterations to find inputs, does not seem very effective,
-                    // maybe like a O(n*2).. and i do mean n*2 since it seems like im doing a 
-                    // couple loops to do this. 
-                    int location = Cart.FindIndex(item => item.Name == input);
-                    double newVal = value * quantity;
+        //    var input = Console.ReadLine();
+        //    int quantity = int.Parse(Console.ReadLine());
+        //    if (Cart.Exists(item => item.Name == input))
+        //    {
+        //        if (Store.TryGetValue(input, out double value))
+        //        {
+        //            // i don't like that im using soo many iterations to find inputs, does not seem very effective,
+        //            // maybe like a O(n*2).. and i do mean n*2 since it seems like im doing a 
+        //            // couple loops to do this. 
+        //            int location = Cart.FindIndex(item => item.Name == input);
+        //            double newVal = value * quantity;
 
-                    Cart[location].Quantity += quantity;
-                    Cart[location].Price += newVal;
-                }
-            }
-            else if (Store.TryGetValue(input, out double value))
-            {
-                Cart.Add(new StoreItem(input, value * quantity, quantity));
-            }
-        }
+        //            Cart[location].Quantity += quantity;
+        //            Cart[location].Price += newVal;
+        //        }
+        //    }
+        //    else if (Store.TryGetValue(input, out double value))
+        //    {
+        //        Cart.Add(new StoreItem(input, value * quantity, quantity));
+        //    }
+        //}
 
         private void ViewCart()
         {
