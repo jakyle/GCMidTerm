@@ -13,7 +13,6 @@ namespace MidtermProject.Classes
         //FIELDS
         //these below have been implimented from iPayments
         public string ProductName { get; set; }
-        public string Description { get; set; }
         public double Price { get; set; }
         public int Quantity { get; set; }
 
@@ -36,10 +35,9 @@ namespace MidtermProject.Classes
         //    DairyChoice = _dairyChoice;
         //    EspressoAmount = _espressoAmount;
         //}
-        public CoffeeObj(string _productName, string _description, double _price)
+        public CoffeeObj(string _productName, double _price)
         {
             ProductName = _productName;
-            Description = _description;
             Price = _price;
         }
         //public Coffee()
