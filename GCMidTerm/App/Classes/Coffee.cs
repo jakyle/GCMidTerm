@@ -17,25 +17,43 @@ namespace MidtermProject.Classes
         public double Price { get; set; }
         public int Quantity { get; set; }
 
-        //new unique fields for Coffee.cs
-        public Flavors Flavor { get; set; }
-        public Size Size { get; set; }
-        public Dairy DairyChoice { get; set; }
-        public int EspressoAmount { get; set; }
+        ////new unique fields for Coffee.cs
+        //public Flavors Flavor { get; set; }
+        //public Size Size { get; set; }
+        //public Dairy DairyChoice { get; set; }
+        //public int EspressoAmount { get; set; }
 
-        //constructor: giving value to our properties
-        public Coffee(string _productName, string _description, double _price, int _quantity,
-            Flavors _flavor, Size _size, Dairy _dairyChoice, int _espressoAmount)
+        ////constructor: giving value to our properties
+        //public Coffee(string _productName, string _description, double _price, int _quantity,
+        //    Flavors _flavor, Size _size, Dairy _dairyChoice, int _espressoAmount)
+        //{
+        //    ProductName = _productName;
+        //    Description = _description;
+        //    Price = _price;
+        //    Quantity = _quantity;
+        //    Flavor = _flavor;
+        //    Size = _size;
+        //    DairyChoice = _dairyChoice;
+        //    EspressoAmount = _espressoAmount;
+        //}
+        public Coffee(string _productName, string _description, double _price)
         {
             ProductName = _productName;
             Description = _description;
             Price = _price;
-            Quantity = _quantity;
-            Flavor = _flavor;
-            Size = _size;
-            DairyChoice = _dairyChoice;
-            EspressoAmount = _espressoAmount;
         }
+        //public Coffee()
+        //{
+        //    ProductName = _productName;
+        //    Description = _description;
+        //    Price = _price;
+        //    Quantity = _quantity;
+        //    Flavor = _flavor;
+        //    Size = _size;
+        //    DairyChoice = _dairyChoice;
+        //    EspressoAmount = _espressoAmount;
+        //}
+
 
 
     }

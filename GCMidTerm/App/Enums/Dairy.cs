@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MidtermProject.Enums
 {
-    class Dairy
-    {
-    }
+    //class Dairy
+    //{
+    //}
 }

@@ -8,14 +8,14 @@ using MidtermProject.Classes;
 
 namespace MidtermProject.Enums
 {
-    public enum Flavors
-    {
-        vanilla = 1,
-        matcha,
-        caramel,
-        chocolate,
-        whiteChocolate,
-        seaSalt,
-        peppermint,
-    }
+    //public enum Flavors
+    //{
+    //    vanilla = 1,
+    //    matcha,
+    //    caramel,
+    //    chocolate,
+    //    whiteChocolate,
+    //    seaSalt,
+    //    peppermint,
+    //}
 }

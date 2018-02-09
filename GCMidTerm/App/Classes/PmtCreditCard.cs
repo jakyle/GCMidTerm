@@ -24,15 +24,6 @@ namespace MidtermProject.Classes
             SecurityNum = securityNum;
             Exp = exp;
             Name = name;
-
-
-
         }
-
-
-
-
-
-
     }
 }
