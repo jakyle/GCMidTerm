@@ -27,7 +27,6 @@ namespace MidtermProject.Enums
         DoubleHotChocolate,
         HotChocolate,
         PeppermintHotChocolate
-
     }
     public void Menu()
     {
@@ -46,15 +45,13 @@ namespace MidtermProject.Enums
         Coffee doublehotchocolate = Coffee.DoubleHotChocolate;
         Coffee hotchocolate = Coffee.HotChocolate;
         Coffee pepperminthotchocolate = Coffee.PeppermintHotChocolate;
-
-
-        //creating coffee objects
+        
+        //creating coffee objects with enums
         CoffeeObj Black = new CoffeeObj(Coffee.Black.ToString(), 3.50);
         CoffeeObj Decaf = new CoffeeObj(Coffee.Decaf.ToString(), 3.50);
         CoffeeObj Latte = new CoffeeObj(Coffee.Latte.ToString(), 3.50);
         CoffeeObj VanillaLatte = new CoffeeObj(Coffee.VanillaLatte.ToString(), 3.50);
         CoffeeObj CaramelLatte = new CoffeeObj(Coffee.CaramelLatte.ToString(), 3.50);
-
         CoffeeObj Mocha = new CoffeeObj(Coffee.Mocha.ToString(), 3.50);
         CoffeeObj WhiteChocolateMocha = new CoffeeObj(Coffee.WhiteChocolateMocha.ToString(), 3.50);
         CoffeeObj PeppermintMocha = new CoffeeObj(Coffee.PeppermintMocha.ToString(), 3.50);
@@ -62,10 +59,7 @@ namespace MidtermProject.Enums
         CoffeeObj DoubleHotChocolate = new CoffeeObj(Coffee.DoubleHotChocolate.ToString(), 3.50);
         CoffeeObj HotChocolate = new CoffeeObj(Coffee.HotChocolate.ToString(), 3.50);
         CoffeeObj PeppermintHotChocolate = new CoffeeObj(Coffee.PeppermintHotChocolate.ToString(), 3.50);
-
-
-
-
+        
     }
 }
 

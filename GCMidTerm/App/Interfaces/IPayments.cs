@@ -12,9 +12,6 @@ namespace MidtermProject.Interfaces
     {
         double Amount { get; set; }
         // only common denominator.
-        
-
-
     }
 }
 
