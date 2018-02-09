@@ -1,0 +1,12 @@
+﻿Black Coffee 
+Decaf Black Coffee
+Latte
+Vanilla Latte
+Caramel Latte
+Mocha
+White Chocolate Mocha
+Peppermint Mocha
+Double Chocolate Mocha
+Double Hot Chocolate
+Hot Chocolate
+Peppermint Hot Chocolate
