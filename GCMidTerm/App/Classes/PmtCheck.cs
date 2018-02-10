@@ -12,6 +12,7 @@ namespace MidtermProject.Classes
         public long RoutingNumber { get; set; }
         public int CheckNumber { get; set; }
 
+
         public PmtCheck(double amount, long accountNumber, long routingNumber, int checkNumber)
         {
             Amount = amount;
