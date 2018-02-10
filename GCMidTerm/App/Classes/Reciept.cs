@@ -1,52 +1,78 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-//adding "using MidtermProject." so that we can access the new interfaces we created in the folder hierarchy
+﻿//adding "using MidtermProject." so that we can access the new interfaces we created in the folder hierarchy
 using MidtermProject.Interfaces;
-using MidtermProject.Enums;
-using MidtermProject.Classes;
+using System;
+using System.Collections.Generic;
 
 
 namespace MidtermProject.Classes
 {
-    class Reciept
+    public static class Reciept
     {
-        public static string PrintReceipt();
+
+
+        static void Print(PmtCreditCard creditCard, List<IProduct> cart)
         {
-              Console.WriteLine(new string ('*',20)); 
+            Console.WriteLine(new string('*', 20));
+            Console.WriteLine("\nHere is your reciept:\n");
+            //---------------------------------------------
+            double subTotal = Register.GetSubTotal(cart);
+            Console.WriteLine($"subtotal: {subTotal}");
+            //---------------------------------------------
+            double tax = Register.CalculateSalesTax(subTotal, 0.06);
+            Console.WriteLine($"Tax: {tax}");
+            //---------------------------------------------
+            double grandTotal = Register.GetGrandTotal(subTotal, tax);
+            Console.WriteLine($"Grand Total: {grandTotal}\n");
+            //---------------------------------------------
+            Console.WriteLine($"CardNO: {creditCard.CCNumber}");
+            Console.WriteLine($"ExpirateionDate: {creditCard.Exp}");
+            Console.WriteLine($"ExpirateionDate: {creditCard.SecurityNum}\n");
+            //---------------------------------------------
+            Console.WriteLine("\nThank you! Please come again!\n");
+            Console.WriteLine(new string('*', 20));
+        }
 
+        static void Print(PmtCheck check, List<IProduct> cart)
+        {
+            Console.WriteLine(new string('*', 20));
+            Console.WriteLine("\nHere is your reciept:\n");
+            //---------------------------------------------
+            double subTotal = Register.GetSubTotal(cart);
+            Console.WriteLine($"subtotal: {subTotal}");
+            //---------------------------------------------
+            double tax = Register.CalculateSalesTax(subTotal, 0.06);
+            Console.WriteLine($"Tax: {tax}");
+            //---------------------------------------------
+            double grandTotal = Register.GetGrandTotal(subTotal, tax);
+            Console.WriteLine($"Grand Total: {grandTotal}\n");
+            //---------------------------------------------
+            Console.WriteLine($"ACC-No: {check.AccountNumber}");
+            Console.WriteLine($"ROUTING-No: {check.RoutingNumber}\n");
+            //---------------------------------------------
+            Console.WriteLine("\nThank you! Please come again!\n");
+            Console.WriteLine(new string('*', 20));
+        }
 
-             Console.WriteLine("\nHere is your reciept:\n");
-            //add ProductName, Price, Quantity, Subtotal, SalesTax, GrandTotal
+        static void Print(PmtCash check, List<IProduct> cart)
+        {
+            Console.WriteLine(new string('*', 20));
+            Console.WriteLine("\nHere is your reciept:\n");
+            //---------------------------------------------
+            double subTotal = Register.GetSubTotal(cart);
+            Console.WriteLine($"subtotal: {subTotal}");
+            //---------------------------------------------
+            double tax = Register.CalculateSalesTax(subTotal, 0.06);
+            Console.WriteLine($"Tax: {tax}");
+            //---------------------------------------------
+            double grandTotal = Register.GetGrandTotal(subTotal, tax);
+            Console.WriteLine($"Grand Total: {grandTotal}\n");
+            //---------------------------------------------
+            Console.WriteLine("All paid in cash!\n");
+            //---------------------------------------------
+            Console.WriteLine("\nThank you! Please come again!\n");
+            Console.WriteLine(new string('*', 20));
+        }
 
-            //switch: PaymentChoice
-            //run the method for each payment info entered in the register (cash, check, cc)
-                
-            Console.WriteLine("\nThank you! Please come again! \n");
-            Console.WriteLine(new string ('*',20));
-    
-
-//create method to generate payment info for each type. then invoke the method in the register. 
-
-
-
-        switch  (PaymentChoice)
-   
-        case cash;
-        Console.WriteLine($"Here is your change: ${giveChange}.");  
-        break;   
-      
-
-        case: creditCard
-        Console.WriteLine($"Paid with {creditCard}");
-        break;   
-
-        case: check
-        Console.WriteLine($"Paid with {check});
-        break;
-    }
     }
 }
 

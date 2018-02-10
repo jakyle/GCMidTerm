@@ -1,13 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-//adding "using MidtermProject." so that we can access the new interfaces we created in the folder hierarchy
+﻿//adding "using MidtermProject." so that we can access the new interfaces we created in the folder hierarchy
 using MidtermProject.Interfaces;
-using MidtermProject.Enums;
-using MidtermProject.Classes;
+using System.Collections.Generic;
 
 namespace MidtermProject.Classes
 {
+
+    /// <summary>
+    /// type can be: Class, ValueTypes, enums... anything that can be declared in a namespace
+    /// </summary>
+
     static class Register
     {
         //register must do the following:
@@ -39,7 +40,6 @@ namespace MidtermProject.Classes
 
         }
 
-
         public static double CalculateSalesTax(double subtotal, double salesTaxRate)  //use subtotal as the argument
         {
             double salesTaxAmount = salesTaxRate * subtotal;
@@ -54,65 +54,5 @@ namespace MidtermProject.Classes
 
         }
 
-
-        //PROCESS - select payment type
-
-
-        public static void GetPaymentType(PaymentTypes PmtType)  //PmtType is a temporary variable
-        {
-            switch (PmtType)
-            {
-
-                // CASH
-                case PaymentTypes.cash:
-                    PaymentCash();
-
-                    break;
-
-                case PaymentTypes.creditCard:
-                    PaymentCreditCard();
-
-                    break;
-                case PaymentTypes.check:
-                    PaymentCheck();
-
-                    break;
-            }
-        }
-        private static void PaymentCash()
-        {
-            Console.WriteLine("Enter total payment due: ");
-            double cashAmount = double.Parse(Console.ReadLine()); //setting variable for user's cash amount
-            PmtCash cash = new PmtCash(cashAmount); //making new cash object with cash class
-        }
-        private static void PaymentCheck()
-        {
-            Console.WriteLine("Enter total payment due: ");
-            double checkAmount = double.Parse(Console.ReadLine()); //setting variable for user's cash amount
-            Console.WriteLine("Enter account number: ");
-            long acctNum = long.Parse(Console.ReadLine());
-            Console.WriteLine("Enter routing number: ");
-            long routNum = long.Parse(Console.ReadLine());
-            Console.WriteLine("Enter check number: ");
-            int checkNum = int.Parse(Console.ReadLine());
-            PmtCheck check = new PmtCheck(checkAmount, acctNum, routNum, checkNum); //making new cash object with cash class
-        }
-        private static void PaymentCreditCard()
-        {
-            //getting information from constructor to save CC Info
-            Console.WriteLine("Enter total payment due: ");
-            double creditCard = double.Parse(Console.ReadLine()); //setting variable for user's cash amount
-            Console.WriteLine("Enter credit card number: ");
-            long creditCardNumber = long.Parse(Console.ReadLine());
-            Console.WriteLine("Enter CVV code: ");
-            int cvv = int.Parse(Console.ReadLine());
-            Console.WriteLine("Enter expiration date: mm/yy");
-            DateTime expDate = DateTime.Parse(Console.ReadLine());
-            //datetime
-            Console.WriteLine("Please input your first and last name: ");
-            string userName = Console.ReadLine();
-
-            PmtCreditCard credit = new PmtCreditCard(creditCard, creditCardNumber, cvv, expDate, userName); //making new cash object with cash class
-        }
     }
 }
