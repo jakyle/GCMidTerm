@@ -17,22 +17,31 @@ namespace MidtermProject.Classes
         public List<IProduct> Cart { get; set; } = new List<IProduct>();
         public AppMenu MenuChoice { get; set; }
         public IPayments UserPayment { get; set; }
+        public CoffeeMenu StoreMenu { get; } = new CoffeeMenu();
 
         public void Run()
         {
             while (IsRunning == true)
             {
                 Console.WriteLine("Welcome to the grand circus coffee app! what would you like to do?");
-                AppMenuChoices(); //calling menu options
+                if (Cart.Count < 1)
+                {
+                    PartialChoices();
+                }
+                else
+                {
+                    AppMenuChoices(); //calling menu options
+                }
                 AppMenu input = (AppMenu)Enum.Parse(typeof(AppMenu), Console.ReadLine());
                 InputMenu(input);
+                Console.WriteLine("Press any key to continue...");
+                Console.ReadKey();
+                Console.Clear();
             }
 
         }
 
         private void AppMenuChoices()
-        //get values is getting enum values
-        //cast.appmenu is putting this into an array
         {
             var menuList = Enum.GetValues(typeof(AppMenu)).Cast<AppMenu>();
             foreach (var item in menuList)
@@ -41,12 +50,20 @@ namespace MidtermProject.Classes
             }
         }
 
+        private void PartialChoices()
+        {
+            var menuList = Enum.GetValues(typeof(AppMenu)).Cast<AppMenu>().ToList();
+            Console.WriteLine(menuList[0]);
+            Console.WriteLine(menuList[2]);
+            Console.WriteLine(menuList[menuList.Count - 1]);
+        }
+
         private void InputMenu(AppMenu MenuChoice)
         {
             switch (MenuChoice)
             {
                 case AppMenu.viewmenu:
-                    ViewMenu();
+                    DisplayStoreItems();
                     break;
                 case AppMenu.viewcart:
                     ViewCart();
@@ -66,51 +83,65 @@ namespace MidtermProject.Classes
             }
         }
 
-        private void ViewMenu()
+        private void DisplayStoreItems()
         {
-            IEnumerable<StoreMenu> Menus = Enum.GetValues(typeof(StoreMenu)).Cast<StoreMenu>();
-            foreach (StoreMenu Menu in Menus)
+            int acc = 1;
+            foreach (CoffeeObj item in StoreMenu.Items)
             {
-                Console.WriteLine($"[{(int)Menu}]. {Menu}");
+                Console.WriteLine($"[{acc}]. {item.ProductName}\t\t{item.Price}");
+                acc++;
             }
         }
 
         private void ViewCart()
         {
+            int acc = 1;
             foreach (IProduct item in Cart)
             {
-                Console.WriteLine($"{item}");
+                Console.WriteLine($"{acc}. {item}");
+                acc++;
             }
         }
 
         public void AddItem()
         {
-            //    // DisplayStoreItems();
+            DisplayStoreItems();
+            Console.WriteLine("Which coffee would you like to purchase?");
+            var input = Console.ReadLine();
 
-            //    var input = Console.ReadLine();
-            //    int quantity = int.Parse(Console.ReadLine());
-            //    if (Cart.Exists(item => item.Name == input))
-            //    {
-            //        if (Store.TryGetValue(input, out double value))
-            //        {
-            //            // i don't like that im using soo many iterations to find inputs, does not seem very effective,
-            //            // maybe like a O(n*2).. and i do mean n*2 since it seems like im doing a 
-            //            // couple loops to do this. 
-            //            int location = Cart.FindIndex(item => item.Name == input);
-            //            double newVal = value * quantity;
-            //            Cart[location].Quantity += quantity;
-            //            Cart[location].Price += newVal;
-            //        }
-            //    }
-            //    else if (Store.TryGetValue(input, out double value))
-            //    {
-            //        Cart.Add(new StoreItem(input, value * quantity, quantity));
-            //    }
+            // Logic to find the price of the item, used Linq methods to find the location of item
+            // based on user input, and the price of the item located at that index.
+            int itemLocation = StoreMenu.Items.FindIndex(item => item.ProductName.ToLower() == input.ToLower());
+            double itemPrice = StoreMenu.Items[itemLocation].Price;
+            // ------------------------------------------------------------------------------
+            Console.WriteLine("how many do you want?");
+            int quantity = int.Parse(Console.ReadLine());
+
+            // this if statement figures out if the item already exist inside of the
+            // the cart, if it does, it will update the price and the quantity
+            if (Cart.Exists(item => item.ProductName.ToLower() == input.ToLower()))
+            {
+                // item location in cart
+                int location = Cart.FindIndex(item => item.ProductName == input);
+
+                // price of item 
+                double newVal = itemPrice * quantity;
+                Cart[location].Quantity += quantity;
+                Cart[location].Price += newVal;
+            }
+            else
+            {
+                Cart.Add(new CoffeeObj(input, itemPrice * quantity, quantity));
+            }
         }
 
         private void RemoveItem()
         {
-            // remove item from shopping cart
+            ViewCart();
+            Console.WriteLine("Type the name of the item you want to remove.");
+            string input = Console.ReadLine();
+            int itemLocation = Cart.FindIndex(item => item.ProductName == input);
+            Cart.RemoveAt(itemLocation - 1);
         }
 
         private void Checkout()
