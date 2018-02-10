@@ -2,9 +2,8 @@
 {
     public enum AppMenu
     {
-        viewmenu = 1,
-        viewcart,
-        additem,
+        viewcart = 1,
+        viewmenu,
         removeitem,
         checkout,
         quit

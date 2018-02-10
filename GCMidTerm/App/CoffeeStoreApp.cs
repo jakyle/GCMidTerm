@@ -36,7 +36,7 @@ namespace MidtermProject.Classes
                 InputMenu(input);
                 Console.WriteLine("Press any key to continue...");
                 Console.ReadKey();
-                Console.Clear();
+                //Console.Clear();
             }
 
         }
@@ -53,8 +53,7 @@ namespace MidtermProject.Classes
         private void PartialChoices()
         {
             var menuList = Enum.GetValues(typeof(AppMenu)).Cast<AppMenu>().ToList();
-            Console.WriteLine(menuList[0]);
-            Console.WriteLine(menuList[2]);
+            Console.WriteLine(menuList[1]);
             Console.WriteLine(menuList[menuList.Count - 1]);
         }
 
@@ -62,13 +61,10 @@ namespace MidtermProject.Classes
         {
             switch (MenuChoice)
             {
-                case AppMenu.viewmenu:
-                    DisplayStoreItems();
-                    break;
                 case AppMenu.viewcart:
                     ViewCart();
                     break;
-                case AppMenu.additem:
+                case AppMenu.viewmenu:
                     AddItem();
                     break;
                 case AppMenu.removeitem:
@@ -88,7 +84,7 @@ namespace MidtermProject.Classes
             int acc = 1;
             foreach (CoffeeObj item in StoreMenu.Items)
             {
-                Console.WriteLine($"[{acc}]. {item.ProductName}\t\t{item.Price}");
+                Console.WriteLine($"[{acc}]. {item.ProductName}\t\t\t\t\t\t${String.Format("{0:0.00}", item.Price)}");
                 acc++;
             }
         }
@@ -146,8 +142,8 @@ namespace MidtermProject.Classes
 
         private void Checkout()
         {
-            Console.WriteLine($"Your subtotal due is: {Register.GetSubTotal(Cart)}");
-            Console.WriteLine("How would you like to pay?");
+            Console.WriteLine($"Your subtotal due is: ${String.Format("{0:0.00}", Register.GetSubTotal(Cart))}");
+            Console.WriteLine("How would you like to pay? (Cash, Credit, Check)");
             PaymentTypes pmtType = (PaymentTypes)Enum.Parse(typeof(PaymentTypes), Console.ReadLine());
             GetPaymentType(pmtType);
         }
