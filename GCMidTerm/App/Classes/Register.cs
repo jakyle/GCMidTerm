@@ -27,14 +27,14 @@ namespace MidtermProject.Classes
 
 
         public static double GetSubTotal(List<IProduct> Cart)  //pass the list into the GetSubTotal method
-        { 
+        {
             double subtotal = 0;
-          
-            foreach (IProduct item in Cart) //for each element in the cart, store in a temporary value called item
-                {
-                 subtotal += item.Price; 
 
-                }
+            foreach (IProduct item in Cart) //for each element in the cart, store in a temporary value called item
+            {
+                subtotal += item.Price;
+
+            }
             return subtotal;
 
         }
@@ -48,7 +48,7 @@ namespace MidtermProject.Classes
 
         public static double GetGrandTotal(double subtotal, double salesTaxAmount)
         {
-           
+
             double grandTotal = subtotal + salesTaxAmount;
             return grandTotal;
 
@@ -61,65 +61,55 @@ namespace MidtermProject.Classes
         public static void GetPaymentType(PaymentTypes PmtType)  //PmtType is a temporary variable
         {
             switch (PmtType)
-        
+            {
+
                 // CASH
-            case PaymentTypes.cash:  //reference the enum name and then the payment type
-
-                
-
-
-                // CHECK
-                case PaymentTypes.check:     //TO DO - VALIDATION - check number is an integeter
-                    Console.WriteLine("Please enter check number"); //assuming they write check for exact amount 
-
-                    int checkNumber = Console.ReadLine();
+                case PaymentTypes.cash:
+                    PaymentCash();
 
                     break;
 
-                // CREDIT CARD
+                case PaymentTypes.creditCard:
+                    PaymentCreditCard();
 
-                case PaymentTypes.creditCard:   //For credit, get the credit card number, expiration, and CVV.
-                    Console.WriteLine("Please enter the credit card number: \n");
-                    int ccNum = Console.ReadLine();
-                    Console.WriteLine("\nPlease enter the 4-digit expiration date:\n");
-                    int ccExp = Console.ReadLine();
-
-                    Console.WriteLine("Please enter the 3-digit CVV (security code\n");
-                    int ccSec = Console.ReadLine();
                     break;
+                case PaymentTypes.check:
+                    PaymentCheck();
 
-
+                    break;
             }
+        }
+        private static void PaymentCash()
+        {
+            Console.WriteLine("Enter total payment due: ");
+            double cashAmount = double.Parse(Console.ReadLine()); //setting variable for user's cash amount
+            PmtCash cash = new PmtCash(cashAmount); //making new cash object with cash class
 
+        }
 
+        private static void PaymentCheck()
+        {
+            Console.WriteLine("Enter total payment due: ");
+            double checkAmount = double.Parse(Console.ReadLine()); //setting variable for user's cash amount
+            PmtCheck check = new PmtCheck(); //making new cash object with cash class
 
+        }
 
+        private static void PaymentCreditCard()
+        {
+            //getting information from constructor to save CC Info
+            Console.WriteLine("Enter total payment due: ");
+            double creditCard = double.Parse(Console.ReadLine()); //setting variable for user's cash amount
+            Console.WriteLine("Please enter credit card number: ");
+            double creditCardNumber = double.Parse(Console.ReadLine());
+            Console.WriteLine("Please enter CVV code: ");
+            int cvv = int.Parse(Console.ReadLine());
 
+            //datetime
+            Console.WriteLine("Please input your first and last name: ");
+            string userName = Console.ReadLine();
 
-
-            //PROCESS - print reciept
-
-            switch (paymentChoice)
-         
-            case: cash
-            
-            //run cash payment method in the reciept class
-            break;
-            
-
-     
-            
-       case: check
-            //run check payment method in the reciept class
-          break;
-
-       
-        case creditCard
-            
-            //run cc payment method in the reciept class
-            break;
-
-
-
-    //PROCESS - return to menu
+            PmtCreditCard credit = new PmtCreditCard(creditCard, creditCardNumber, cvv, userName); //making new cash object with cash class
+        }
+    }
 }
