@@ -26,11 +26,8 @@ namespace MidtermProject.Classes
             {
                 Console.WriteLine("Welcome to the grand circus coffee app! what would you like to do?");
                 AppMenuChoices(); //calling menu options
-                var input = (AppMenu)Enum.Parse(typeof(AppMenu), Console.ReadLine());
-                if (input == AppMenu.quit)
-                {
-                    Stop();
-                }
+                AppMenu input = (AppMenu)Enum.Parse(typeof(AppMenu), Console.ReadLine());
+                InputMenu(input);
             }
             
         }
@@ -78,6 +75,12 @@ namespace MidtermProject.Classes
                     break;
                 case AppMenu.additem:
                     AddItem();
+                    break;
+                case AppMenu.removeitem:
+                    RemoveItem();
+                    break;
+                case AppMenu.quit:
+                    Stop();
                     break;
             }
         }
