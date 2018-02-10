@@ -1,22 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-//adding "using MidtermProject." so that we can access the new interfaces we created in the folder hierarchy
+﻿//adding "using MidtermProject." so that we can access the new interfaces we created in the folder hierarchy
 using MidtermProject.Interfaces;
-using MidtermProject.Enums;
-using MidtermProject.Classes;
 
 namespace MidtermProject.Classes
 {
     class PmtCheck : IPayments
     {
-        //will hold check number, check amount, routing number, account number
+        //will hold cc type (cctype enum), amount, account number
 
-        double IPayments.Amount { get; set; }
-        public long AccountNumber { get; set; } 
-        long RountingNumber { get; set; }
-        int CheckNumber { get; set; }
+        public double Amount { get; set; }
+        public long AccountNumber { get; set; }
+        public long RoutingNumber { get; set; }
+        public int CheckNumber { get; set; }
 
-        //CONSTRUCTOR
+        public PmtCheck(double amount, long accountNumber, long routingNumber, int checkNumber)
+        {
+            Amount = amount;
+            AccountNumber = accountNumber;
+            RoutingNumber = routingNumber;
+            CheckNumber = checkNumber;
+        }
     }
 }
