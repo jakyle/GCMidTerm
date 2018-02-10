@@ -8,30 +8,31 @@ using MidtermProject.Classes;
 
 namespace MidtermProject.Classes
 {
-    class Register
+    static class Register
     {
-    
-
         //register must do the following:
-        //tally each item chosen from the menu board
-        //Give the subtotal for all items chosen -- KINDA DONE
+        //tally each item chosen from the menu board 
+        //Give the subtotal for all items chosen -- DONE
         //calculate sales tax, and grand total -- DONE
         //Ask for payment type — cash, credit, or check -- DONE
         //For cash, ask for amount tendered and provide change -- DONE
         //For check, get the check number -- DONE
         //For credit, get the credit card number, expiration, and CVV. -- DONE
         //At the end, display a receipt with all items ordered, subtotal, grand total, and appropriate payment info.
-        //Return to the original menu for a new order.  (Hint: you’ll want an array or ArrayList to keep track of what’s been ordered!)
+        //Return to the original menu for a new order.  
+        //Hint: you’ll want an array or ArrayList to keep track of what’s been ordered! -- ** WHERE IS THE ORDER THAT THE CUSTOMER PLACED? **
 
 
         //METHODS - calculate subtotal and grand total 
 
 
-        public void CalculateSubTotal()
+        public decimal GetSubTotal()
         {
-            foreach item in menu //update with correct var name for item and menu
+        //where is the object for the order? this shouldn't pull from the menu, but the selected objects should be saved to a new variable/array and I pull info from there
+
+            foreach (CoffeeObj in arrayTBD) 
                 {
-                double subtotal = itemName * itemPrice * itemQty //update with correct var names
+                decimal subtotal = ProductName * Price * Quantity; //update with correct var names
 
                 }
             return subtotal;
@@ -39,10 +40,17 @@ namespace MidtermProject.Classes
         }
 
 
-        public double GetGrandTotal()  //add tax and get grand total 
+        public decimal CalculateSalesTax() 
         {
-            double salesTaxRate = 1.06;
-            double grandTotal = salesTaxRate *= subtotal;
+            decimal salesTaxRate = 0.06;
+            decimal salesTaxAmount = salesTaxRate * subtotal;
+            return salesTaxAmount;
+        }
+
+        public decimal GetGrandTotal()
+        {
+           
+            decimal grandTotal = subtotal + salesTaxAmount;
             return grandTotal;
 
         }
@@ -63,20 +71,18 @@ namespace MidtermProject.Classes
             {
 
                 // CASH
-                case cash:     //For cash, ask for amount tendered and provide change. 
+                case cash:     
            
                 Console.WriteLine("Please enter the amount of cash you are paying with:");
-                double pmtAmt = Console.ReadLine();
+                decimal pmtAmt = Console.ReadLine();
 
-        double giveChange = pmtAmt - grandTotal;
-
-
-        
+                decimal giveChange = pmtAmt - grandTotal;
+                return giveChange;        
                 break;
 
 
             // CHECK
-            case check:     //For check, get the check number      //TO DO - VALIDATION - check number is an integeter
+                case check:     //TO DO - VALIDATION - check number is an integeter
                  Console.WriteLine("Please enter check number"); //assuming they write check for exact amount 
       
             int checkNumber = Console.ReadLine();
@@ -85,36 +91,43 @@ namespace MidtermProject.Classes
         
         // CREDIT CARD
 
-        case creditCard:   //For credit, get the credit card number, expiration, and CVV.
-         Console.WriteLine("Please enter the credit card number: \n");
-           int ccNum = Console.ReadLine();
-        Console.WriteLine("\nPlease enter the 4-digit expiration date:\n" );
-            int ccExp = Console.ReadLine();
+            case creditCard:   //For credit, get the credit card number, expiration, and CVV.
+             Console.WriteLine("Please enter the credit card number: \n");
+               int ccNum = Console.ReadLine();
+            Console.WriteLine("\nPlease enter the 4-digit expiration date:\n" );
+                int ccExp = Console.ReadLine();
 
-        Console.WriteLine("Please enter the 3-digit CVV (security code\n");
-            int ccSec = Console.ReadLine();
-        break;
+            Console.WriteLine("Please enter the 3-digit CVV (security code\n");
+                int ccSec = Console.ReadLine();
+            break;
     
 
 
 
 
     //PROCESS - print reciept
+     
+        switch (paymentChoice)
+         
+            case: cash
+            
+            //run cash payment method in the reciept class
+            break;
+            
 
-//create method to print reciept and use overrides? or just do it here?
+     
+            
+       case: check
+            //run check payment method in the reciept class
+          break;
 
-    if (PaymentType == cash)
-    {
-            Console.WriteLine($"Here is your change: ${giveChange}.");  
-            Console.WriteLine("Here is your reciept:");
-
-   
-//need method to generate reciept for each type. then invoke the method here in the register. 
+       
+        case creditCard
+            
+            //run cc payment method in the reciept class
+            break;
 
 
-    Console.WriteLine("Thank you! Please come again!);
-    }
 
     //PROCESS - return to menu
-    //call the method? is this the only place we will return to menu? 
 }
