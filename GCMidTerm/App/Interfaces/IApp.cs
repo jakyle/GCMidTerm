@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-//adding "using MidtermProject." so that we can access the new interfaces we created in the folder hierarchy
-using MidtermProject.Interfaces;
-using MidtermProject.Enums;
-using MidtermProject.Classes;
+﻿//adding "using MidtermProject." so that we can access the new interfaces we created in the folder hierarchy
 
 namespace MidtermProject.Interfaces
 {
@@ -13,6 +7,6 @@ namespace MidtermProject.Interfaces
         bool IsRunning { get; set; }
 
         void Run();
-        void Stop();
+        void Quit();
     }
 }

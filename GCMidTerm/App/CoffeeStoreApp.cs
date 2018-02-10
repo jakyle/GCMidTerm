@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using MidtermProject.Enums;
 //adding "using MidtermProject." so that we can access the new interfaces we created in the folder hierarchy
 using MidtermProject.Interfaces;
-using MidtermProject.Enums;
-using MidtermProject.Classes;
-using MidtermProject.Utilities;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace MidtermProject.Classes
@@ -29,32 +26,12 @@ namespace MidtermProject.Classes
                 AppMenu input = (AppMenu)Enum.Parse(typeof(AppMenu), Console.ReadLine());
                 InputMenu(input);
             }
-            
-        }
 
-        public void Stop()
-        {
-            Console.WriteLine("would you like to close the program? (press Y to close, N to continue)");
-            ConsoleKey answer = Console.ReadKey().Key;
-            if (answer == ConsoleKey.Y)
-            {
-                Console.WriteLine("Thank you for shopping with us, have a good day!");
-                IsRunning = false;
-            }
-        }
-
-        private void PrintMenu()
-        {
-            IEnumerable<StoreMenu> Menus = Enum.GetValues(typeof(StoreMenu)).Cast<StoreMenu>();
-            foreach (StoreMenu Menu in Menus)
-            {
-                Console.WriteLine($"[{(int)Menu}]. {Menu}");
-            }
         }
 
         private void AppMenuChoices()
-            //get values is getting enum values
-            //cast.appmenu is putting this into an array
+        //get values is getting enum values
+        //cast.appmenu is putting this into an array
         {
             var menuList = Enum.GetValues(typeof(AppMenu)).Cast<AppMenu>();
             foreach (var item in menuList)
@@ -68,7 +45,7 @@ namespace MidtermProject.Classes
             switch (MenuChoice)
             {
                 case AppMenu.viewmenu:
-                    PrintMenu();
+                    ViewMenu();
                     break;
                 case AppMenu.viewcart:
                     ViewCart();
@@ -79,37 +56,23 @@ namespace MidtermProject.Classes
                 case AppMenu.removeitem:
                     RemoveItem();
                     break;
+                case AppMenu.checkout:
+                    Checkout();
+                    break;
                 case AppMenu.quit:
-                    Stop();
+                    Quit();
                     break;
             }
         }
 
-        //public void AddItem()
-        //{
-        //    // DisplayStoreItems();
-
-        //    var input = Console.ReadLine();
-        //    int quantity = int.Parse(Console.ReadLine());
-        //    if (Cart.Exists(item => item.Name == input))
-        //    {
-        //        if (Store.TryGetValue(input, out double value))
-        //        {
-        //            // i don't like that im using soo many iterations to find inputs, does not seem very effective,
-        //            // maybe like a O(n*2).. and i do mean n*2 since it seems like im doing a 
-        //            // couple loops to do this. 
-        //            int location = Cart.FindIndex(item => item.Name == input);
-        //            double newVal = value * quantity;
-
-        //            Cart[location].Quantity += quantity;
-        //            Cart[location].Price += newVal;
-        //        }
-        //    }
-        //    else if (Store.TryGetValue(input, out double value))
-        //    {
-        //        Cart.Add(new StoreItem(input, value * quantity, quantity));
-        //    }
-        //}
+        private void ViewMenu()
+        {
+            IEnumerable<StoreMenu> Menus = Enum.GetValues(typeof(StoreMenu)).Cast<StoreMenu>();
+            foreach (StoreMenu Menu in Menus)
+            {
+                Console.WriteLine($"[{(int)Menu}]. {Menu}");
+            }
+        }
 
         private void ViewCart()
         {
@@ -118,5 +81,52 @@ namespace MidtermProject.Classes
                 Console.WriteLine($"{item}");
             }
         }
+
+        public void AddItem()
+        {
+            //    // DisplayStoreItems();
+
+            //    var input = Console.ReadLine();
+            //    int quantity = int.Parse(Console.ReadLine());
+            //    if (Cart.Exists(item => item.Name == input))
+            //    {
+            //        if (Store.TryGetValue(input, out double value))
+            //        {
+            //            // i don't like that im using soo many iterations to find inputs, does not seem very effective,
+            //            // maybe like a O(n*2).. and i do mean n*2 since it seems like im doing a 
+            //            // couple loops to do this. 
+            //            int location = Cart.FindIndex(item => item.Name == input);
+            //            double newVal = value * quantity;
+            //            Cart[location].Quantity += quantity;
+            //            Cart[location].Price += newVal;
+            //        }
+            //    }
+            //    else if (Store.TryGetValue(input, out double value))
+            //    {
+            //        Cart.Add(new StoreItem(input, value * quantity, quantity));
+            //    }
+        }
+
+        private void RemoveItem()
+        {
+            // remove item from shopping cart
+        }
+
+        private void Checkout()
+        {
+            // finish the whole checking out of the app
+        }
+
+        public void Quit()
+        {
+            Console.WriteLine("would you like to close the program? (press Y to close, N to continue)");
+            ConsoleKey answer = Console.ReadKey().Key;
+            if (answer == ConsoleKey.Y)
+            {
+                Console.WriteLine("Thank you for shopping with us, have a good day!");
+                IsRunning = false;
+            }
+        }
+
     }
 }
