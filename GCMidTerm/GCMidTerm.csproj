@@ -57,6 +57,7 @@
     <Compile Include="App\Interfaces\IPayments.cs" />
     <Compile Include="App\Interfaces\IProduct.cs" />
     <Compile Include="App\Utilities\Validation.cs" />
+    <Compile Include="App\Enums\PaymentTypes.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

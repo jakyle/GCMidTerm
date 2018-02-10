@@ -58,55 +58,48 @@ namespace MidtermProject.Classes
         //PROCESS - select payment type
 
 
-        public static void GetPaymentType()
+        public static void GetPaymentType(PaymentTypes PmtType)  //PmtType is a temporary variable
         {
-            Console.WriteLine("How would you like to pay for your order? \n [1]Cash, [2]Check or [3]Card? ");
-            String PaymentChoice = Console.ReadLine();  //TO DO - add validation for this user input to allow numerical choice or written
-        }
+            switch (PmtType)
         
-       
-
-        switch (PaymentChoice)
-            {
-
                 // CASH
-                case cash:     
-           
-                Console.WriteLine("Please enter the amount of cash you are paying with:");
-                decimal pmtAmt = Console.ReadLine();
+            case PaymentTypes.cash:  //reference the enum name and then the payment type
 
-                decimal giveChange = pmtAmt - grandTotal;
-                return giveChange;        
-                break;
+                
 
 
-            // CHECK
-                case check:     //TO DO - VALIDATION - check number is an integeter
-                 Console.WriteLine("Please enter check number"); //assuming they write check for exact amount 
-      
-            int checkNumber = Console.ReadLine();
-                    
-                break;   
-        
-        // CREDIT CARD
+                // CHECK
+                case PaymentTypes.check:     //TO DO - VALIDATION - check number is an integeter
+                    Console.WriteLine("Please enter check number"); //assuming they write check for exact amount 
 
-            case creditCard:   //For credit, get the credit card number, expiration, and CVV.
-             Console.WriteLine("Please enter the credit card number: \n");
-               int ccNum = Console.ReadLine();
-            Console.WriteLine("\nPlease enter the 4-digit expiration date:\n" );
-                int ccExp = Console.ReadLine();
+                    int checkNumber = Console.ReadLine();
 
-            Console.WriteLine("Please enter the 3-digit CVV (security code\n");
-                int ccSec = Console.ReadLine();
-            break;
-    
+                    break;
+
+                // CREDIT CARD
+
+                case PaymentTypes.creditCard:   //For credit, get the credit card number, expiration, and CVV.
+                    Console.WriteLine("Please enter the credit card number: \n");
+                    int ccNum = Console.ReadLine();
+                    Console.WriteLine("\nPlease enter the 4-digit expiration date:\n");
+                    int ccExp = Console.ReadLine();
+
+                    Console.WriteLine("Please enter the 3-digit CVV (security code\n");
+                    int ccSec = Console.ReadLine();
+                    break;
+
+
+            }
 
 
 
 
-    //PROCESS - print reciept
-     
-        switch (paymentChoice)
+
+
+
+            //PROCESS - print reciept
+
+            switch (paymentChoice)
          
             case: cash
             

@@ -17,6 +17,6 @@ namespace MidtermProject.Classes
         long RountingNumber { get; set; }
         int CheckNumber { get; set; }
 
-        
+        //CONSTRUCTOR
     }
 }
