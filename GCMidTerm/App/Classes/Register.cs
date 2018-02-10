@@ -26,13 +26,13 @@ namespace MidtermProject.Classes
         //METHODS - calculate subtotal and grand total 
 
 
-        public decimal GetSubTotal()
-        {
-        //where is the object for the order? this shouldn't pull from the menu, but the selected objects should be saved to a new variable/array and I pull info from there
-
-            foreach (CoffeeObj in arrayTBD) 
+        public static double GetSubTotal(List<IProduct> Cart)  //pass the list into the GetSubTotal method
+        { 
+            double subtotal = 0;
+          
+            foreach (IProduct item in Cart) //for each element in the cart, store in a temporary value called item
                 {
-                decimal subtotal = ProductName * Price * Quantity; //update with correct var names
+                 subtotal += item.Price; 
 
                 }
             return subtotal;
@@ -40,17 +40,16 @@ namespace MidtermProject.Classes
         }
 
 
-        public decimal CalculateSalesTax() 
+        public static double CalculateSalesTax(double subtotal, double salesTaxRate)  //use subtotal as the argument
         {
-            decimal salesTaxRate = 0.06;
-            decimal salesTaxAmount = salesTaxRate * subtotal;
+            double salesTaxAmount = salesTaxRate * subtotal;
             return salesTaxAmount;
         }
 
-        public decimal GetGrandTotal()
+        public static double GetGrandTotal(double subtotal, double salesTaxAmount)
         {
            
-            decimal grandTotal = subtotal + salesTaxAmount;
+            double grandTotal = subtotal + salesTaxAmount;
             return grandTotal;
 
         }
@@ -59,7 +58,7 @@ namespace MidtermProject.Classes
         //PROCESS - select payment type
 
 
-        public void GetPaymentType()
+        public static void GetPaymentType()
         {
             Console.WriteLine("How would you like to pay for your order? \n [1]Cash, [2]Check or [3]Card? ");
             String PaymentChoice = Console.ReadLine();  //TO DO - add validation for this user input to allow numerical choice or written
