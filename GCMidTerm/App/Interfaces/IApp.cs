@@ -7,6 +7,5 @@ namespace MidtermProject.Interfaces
         bool IsRunning { get; set; }
 
         void Run();
-        void Quit();
     }
 }

@@ -223,7 +223,7 @@ namespace MidtermProject.Classes
             UserPaidCheck = false;
             UserPaidCredit = false;
         }
-        public void Quit()
+        private void Quit()
         {
             Console.WriteLine("would you like to close the program? (press Y to close, N to continue)");
             ConsoleKey answer = Console.ReadKey().Key;
