@@ -102,23 +102,20 @@ namespace MidtermProject.Classes
         private void AddItem()
         {
             DisplayStoreItems();
-            Console.WriteLine("Which coffee would you like to purchase?");
-            var input = Console.ReadLine();
-
-            // Logic to find the price of the item, used Linq methods to find the location of item
-            // based on user input, and the price of the item located at that index.
-            int itemLocation = StoreMenu.Items.FindIndex(item => item.ProductName.ToLower() == input.ToLower());
-            double itemPrice = StoreMenu.Items[itemLocation].Price;
+            Console.WriteLine("Which coffee would you like to purchase? enter the number in between the \"[ ] \"");
+            int input = int.Parse(Console.ReadLine()) - 1;
+            string itemName = StoreMenu.Items[input].ProductName;
+            double itemPrice = StoreMenu.Items[input].Price;
             // ------------------------------------------------------------------------------
             Console.WriteLine("how many do you want?");
             int quantity = int.Parse(Console.ReadLine());
 
             // this if statement figures out if the item already exist inside of the
             // the cart, if it does, it will update the price and the quantity
-            if (Cart.Exists(item => item.ProductName.ToLower() == input.ToLower()))
+            if (Cart.Exists(item => item.ProductName == itemName))
             {
                 // item location in cart
-                int location = Cart.FindIndex(item => item.ProductName == input);
+                int location = Cart.FindIndex(item => item.ProductName == itemName);
 
                 // price of item 
                 double newVal = itemPrice * quantity;
@@ -127,7 +124,7 @@ namespace MidtermProject.Classes
             }
             else
             {
-                Cart.Add(new CoffeeObj(input, itemPrice * quantity, quantity));
+                Cart.Add(new CoffeeObj(itemName, itemPrice * quantity, quantity));
             }
         }
         private void RemoveItem()
@@ -140,7 +137,8 @@ namespace MidtermProject.Classes
         }
         private void Checkout()
         {
-            Console.WriteLine($"Your subtotal due is: ${String.Format("{0:0.00}", Register.GetSubTotal(Cart))}");
+            GetTotalAmounts();
+            Console.WriteLine($"Your grand total due is: ${String.Format("{0:0.00}", GrandTotal)}");
             Console.WriteLine("How would you like to pay? ([1].Cash, [2].Credit, [3].Check)");
             PaymentTypes pmtType = (PaymentTypes)Enum.Parse(typeof(PaymentTypes), Console.ReadLine().ToLower());
             GetPaymentType(pmtType);
@@ -151,7 +149,6 @@ namespace MidtermProject.Classes
         }
         private void GetPaymentType(PaymentTypes PmtType)  //PmtType is a temporary variable
         {
-            GetTotalAmounts();
             switch (PmtType)
             {
                 case PaymentTypes.cash:
@@ -177,7 +174,7 @@ namespace MidtermProject.Classes
         {
             Console.WriteLine("Enter amount tendered: ");
             CashAmount = double.Parse(Console.ReadLine());//setting variable for user's cash amount
-            while (CashAmount <= GrandTotal)
+            while (CashAmount < GrandTotal)
             {
                 Console.WriteLine("yo dude, we need more money!: ");
                 CashAmount = double.Parse(Console.ReadLine());
