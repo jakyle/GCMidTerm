@@ -27,7 +27,7 @@ namespace MidtermProject.Classes
 
         public override string ToString()
         {
-            return $"{ProductName}\t\t...${String.Format("{0:0.00}", Price)}\tQty: {Quantity}";
+            return $"{ProductName}\t\t${String.Format("{0:0.00}", Price)}\tQty: {Quantity}";
         }
 
     }

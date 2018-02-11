@@ -14,14 +14,20 @@ namespace MidtermProject.Classes
 
         //menu items, add/remove items, etc
         public bool IsRunning { get; set; } = true;
-        public List<IProduct> Cart { get; set; } = new List<IProduct>();
-        public AppMenu MenuChoice { get; set; }
-        public IPayments UserPayment { get; set; }
+        public bool UserPaidCash { get; set; } = false;
+        public bool UserPaidCredit { get; set; } = false;
+        public bool UserPaidCheck { get; set; } = false;
+        public double SubTotal { get; set; }
+        public double Tax { get; set; }
+        public double GrandTotal { get; set; }
         public CoffeeMenu StoreMenu { get; } = new CoffeeMenu();
+        public List<IProduct> Cart { get; set; } = new List<IProduct>();
+        public IPayments UserPayment { get; set; }
+        public double CashAmount { get; set; }
 
         public void Run()
         {
-            while (IsRunning == true)
+            while (IsRunning)
             {
                 Console.WriteLine("Welcome to the grand circus coffee app! what would you like to do?");
                 if (Cart.Count < 1)
@@ -36,11 +42,10 @@ namespace MidtermProject.Classes
                 InputMenu(input);
                 Console.WriteLine("Press any key to continue...");
                 Console.ReadKey();
-                //Console.Clear();
+                Console.Clear();
             }
 
         }
-
         private void AppMenuChoices()
         {
             var menuList = Enum.GetValues(typeof(AppMenu)).Cast<AppMenu>();
@@ -49,14 +54,12 @@ namespace MidtermProject.Classes
                 Console.WriteLine(item);
             }
         }
-
         private void PartialChoices()
         {
             var menuList = Enum.GetValues(typeof(AppMenu)).Cast<AppMenu>().ToList();
             Console.WriteLine(menuList[1]);
             Console.WriteLine(menuList[menuList.Count - 1]);
         }
-
         private void InputMenu(AppMenu MenuChoice)
         {
             switch (MenuChoice)
@@ -78,7 +81,6 @@ namespace MidtermProject.Classes
                     break;
             }
         }
-
         private void DisplayStoreItems()
         {
             int acc = 1;
@@ -88,7 +90,6 @@ namespace MidtermProject.Classes
                 acc++;
             }
         }
-
         private void ViewCart()
         {
             int acc = 1;
@@ -98,8 +99,7 @@ namespace MidtermProject.Classes
                 acc++;
             }
         }
-
-        public void AddItem()
+        private void AddItem()
         {
             DisplayStoreItems();
             Console.WriteLine("Which coffee would you like to purchase?");
@@ -130,7 +130,6 @@ namespace MidtermProject.Classes
                 Cart.Add(new CoffeeObj(input, itemPrice * quantity, quantity));
             }
         }
-
         private void RemoveItem()
         {
             ViewCart();
@@ -139,36 +138,26 @@ namespace MidtermProject.Classes
             int itemLocation = Cart.FindIndex(item => item.ProductName == input);
             Cart.RemoveAt(itemLocation - 1);
         }
-
         private void Checkout()
         {
             Console.WriteLine($"Your subtotal due is: ${String.Format("{0:0.00}", Register.GetSubTotal(Cart))}");
-            Console.WriteLine("How would you like to pay? (Cash, Credit, Check)");
-            PaymentTypes pmtType = (PaymentTypes)Enum.Parse(typeof(PaymentTypes), Console.ReadLine());
+            Console.WriteLine("How would you like to pay? ([1].Cash, [2].Credit, [3].Check)");
+            PaymentTypes pmtType = (PaymentTypes)Enum.Parse(typeof(PaymentTypes), Console.ReadLine().ToLower());
             GetPaymentType(pmtType);
+            Console.WriteLine();
+            GetReciept();
+            Cart.Clear();
+            Quit();
         }
-
-        public void Quit()
-        {
-            Console.WriteLine("would you like to close the program? (press Y to close, N to continue)");
-            ConsoleKey answer = Console.ReadKey().Key;
-            if (answer == ConsoleKey.Y)
-            {
-                Console.WriteLine("Thank you for shopping with us, have a good day!");
-                IsRunning = false;
-            }
-        }
-
         private void GetPaymentType(PaymentTypes PmtType)  //PmtType is a temporary variable
         {
+            GetTotalAmounts();
             switch (PmtType)
             {
-
-                // CASH
                 case PaymentTypes.cash:
                     PaymentCash();
                     break;
-                case PaymentTypes.creditCard:
+                case PaymentTypes.credit:
                     PaymentCreditCard();
                     break;
                 case PaymentTypes.check:
@@ -176,47 +165,39 @@ namespace MidtermProject.Classes
                     break;
             }
         }
-
+        private void GetTotalAmounts()
+        {
+            // figuring out the grand total for the user
+            SubTotal = Register.GetSubTotal(Cart);
+            Tax = Register.CalculateSalesTax(SubTotal, 0.06);
+            GrandTotal = Register.GetGrandTotal(SubTotal, Tax);
+            //--------------------------------------------
+        }
         private void PaymentCash()
         {
-            Console.WriteLine("Enter total payment due: ");
-            double cashAmount = double.Parse(Console.ReadLine()); //setting variable for user's cash amount
-            while (cashAmount != Register.GetSubTotal(Cart))
+            Console.WriteLine("Enter amount tendered: ");
+            CashAmount = double.Parse(Console.ReadLine());//setting variable for user's cash amount
+            while (CashAmount <= GrandTotal)
             {
-                Console.WriteLine("Amount does not match, Enter total payment due: ");
-                cashAmount = double.Parse(Console.ReadLine());
+                Console.WriteLine("yo dude, we need more money!: ");
+                CashAmount = double.Parse(Console.ReadLine());
             }
-            UserPayment = new PmtCash(cashAmount); //making new cash object with cash class
+            UserPayment = new PmtCash(CashAmount); //making new cash object with cash class
+            UserPaidCash = true;
         }
-
         private void PaymentCheck()
         {
-            Console.WriteLine("Enter total payment due: ");
-            double checkAmount = double.Parse(Console.ReadLine()); //setting variable for user's cash amount
-            while (checkAmount != Register.GetSubTotal(Cart))
-            {
-                Console.WriteLine("Amount does not match, Enter total payment due: ");
-                checkAmount = double.Parse(Console.ReadLine());
-            }
             Console.WriteLine("Enter account number: ");
             long acctNum = long.Parse(Console.ReadLine());
             Console.WriteLine("Enter routing number: ");
             long routNum = long.Parse(Console.ReadLine());
             Console.WriteLine("Enter check number: ");
             int checkNum = int.Parse(Console.ReadLine());
-            UserPayment = new PmtCheck(checkAmount, acctNum, routNum, checkNum); //making new cash object with cash class
+            UserPayment = new PmtCheck(GrandTotal, acctNum, routNum, checkNum); //making new check object from check class
+            UserPaidCheck = true;
         }
-
         private void PaymentCreditCard()
         {
-            //getting information from constructor to save CC Info
-            Console.WriteLine("Enter total payment due: ");
-            double creditCard = double.Parse(Console.ReadLine()); //setting variable for user's cash amount
-            while (creditCard != Register.GetSubTotal(Cart))
-            {
-                Console.WriteLine("Amount does not match, Enter total payment due: ");
-                creditCard = double.Parse(Console.ReadLine());
-            }
             Console.WriteLine("Enter credit card number: ");
             long creditCardNumber = long.Parse(Console.ReadLine());
             Console.WriteLine("Enter CVV code: ");
@@ -227,8 +208,30 @@ namespace MidtermProject.Classes
             Console.WriteLine("Please input your first and last name: ");
             string userName = Console.ReadLine();
 
-            UserPayment = new PmtCreditCard(creditCard, creditCardNumber, cvv, expDate, userName); //making new cash object with cash class
+            UserPayment = new PmtCreditCard(GrandTotal, creditCardNumber, cvv, expDate, userName); //making new credit card object with credit card class
+            UserPaidCredit = true;
         }
-
+        private void GetReciept()
+        {
+            if (UserPaidCash)
+                Reciept.Print((PmtCash)UserPayment, Cart, CashAmount);
+            if (UserPaidCredit)
+                Reciept.Print((PmtCreditCard)UserPayment, Cart);
+            if (UserPaidCheck)
+                Reciept.Print((PmtCheck)UserPayment, Cart);
+            UserPaidCash = false;
+            UserPaidCheck = false;
+            UserPaidCredit = false;
+        }
+        public void Quit()
+        {
+            Console.WriteLine("would you like to close the program? (press Y to close, N to continue)");
+            ConsoleKey answer = Console.ReadKey().Key;
+            if (answer == ConsoleKey.Y)
+            {
+                Console.WriteLine("Thank you for shopping with us, have a good day!");
+                IsRunning = false;
+            }
+        }
     }
 }

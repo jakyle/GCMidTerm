@@ -6,11 +6,11 @@ using System.Collections.Generic;
 
 namespace MidtermProject.Classes
 {
-    public static class Reciept
+    static class Reciept
     {
 
 
-        static void Print(PmtCreditCard creditCard, List<IProduct> cart)
+        public static void Print(PmtCreditCard creditCard, List<IProduct> cart)
         {
             Console.WriteLine(new string('*', 20));
             Console.WriteLine("\nHere is your reciept:\n");
@@ -23,16 +23,19 @@ namespace MidtermProject.Classes
             //---------------------------------------------
             double grandTotal = Register.GetGrandTotal(subTotal, tax);
             Console.WriteLine($"Grand Total: {grandTotal}\n");
+            #region extrastuff
             //---------------------------------------------
             Console.WriteLine($"CardNO: {creditCard.CCNumber}");
             Console.WriteLine($"ExpirateionDate: {creditCard.Exp}");
-            Console.WriteLine($"ExpirateionDate: {creditCard.SecurityNum}\n");
+            Console.WriteLine($"SecurtyNumber: {creditCard.SecurityNum}\n");
+            Console.WriteLine("You've been hacked... wrecked.. easy...");
             //---------------------------------------------
             Console.WriteLine("\nThank you! Please come again!\n");
+            #endregion extrastuff
             Console.WriteLine(new string('*', 20));
         }
 
-        static void Print(PmtCheck check, List<IProduct> cart)
+        public static void Print(PmtCheck check, List<IProduct> cart)
         {
             Console.WriteLine(new string('*', 20));
             Console.WriteLine("\nHere is your reciept:\n");
@@ -48,12 +51,13 @@ namespace MidtermProject.Classes
             //---------------------------------------------
             Console.WriteLine($"ACC-No: {check.AccountNumber}");
             Console.WriteLine($"ROUTING-No: {check.RoutingNumber}\n");
+            Console.WriteLine("haha, stole your check info, EASY!!!");
             //---------------------------------------------
             Console.WriteLine("\nThank you! Please come again!\n");
             Console.WriteLine(new string('*', 20));
         }
 
-        static void Print(PmtCash check, List<IProduct> cart)
+        public static void Print(PmtCash cash, List<IProduct> cart, double amountTendered)
         {
             Console.WriteLine(new string('*', 20));
             Console.WriteLine("\nHere is your reciept:\n");
@@ -67,7 +71,9 @@ namespace MidtermProject.Classes
             double grandTotal = Register.GetGrandTotal(subTotal, tax);
             Console.WriteLine($"Grand Total: {grandTotal}\n");
             //---------------------------------------------
+            double changeDue = Register.MakeChange(amountTendered, grandTotal);
             Console.WriteLine("All paid in cash!\n");
+            Console.WriteLine($"your change is ${String.Format("{0:0.00}", changeDue)}");
             //---------------------------------------------
             Console.WriteLine("\nThank you! Please come again!\n");
             Console.WriteLine(new string('*', 20));

@@ -47,8 +47,8 @@
     <Compile Include="App\Classes\PmtCash.cs" />
     <Compile Include="App\Classes\PmtCheck.cs" />
     <Compile Include="App\Classes\PmtCreditCard.cs" />
-    <Compile Include="App\Classes\Reciept.cs" />
-    <Compile Include="App\Classes\Register.cs" />
+    <Compile Include="App\Utilities\Reciept.cs" />
+    <Compile Include="App\Utilities\Register.cs" />
     <Compile Include="App\CoffeeStoreApp.cs" />
     <Compile Include="App\Enums\AppMenu.cs" />
     <Compile Include="App\Enums\CreditCardType.cs" />

@@ -14,10 +14,8 @@ namespace MidtermProject
             {
                 //app goes here
                 //calling the RUN method in CoffeeStoreApp class to run program
-
                 CoffeeStoreApp coffeeStore = new CoffeeStoreApp();
                 coffeeStore.Run();
-
             }
 
             catch (Exception)

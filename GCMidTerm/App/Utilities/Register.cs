@@ -26,7 +26,6 @@ namespace MidtermProject.Classes
 
         //METHODS - calculate subtotal and grand total 
 
-
         public static double GetSubTotal(List<IProduct> Cart)  //pass the list into the GetSubTotal method
         {
             double subtotal = 0;
@@ -52,6 +51,12 @@ namespace MidtermProject.Classes
             double grandTotal = subtotal + salesTaxAmount;
             return grandTotal;
 
+        }
+
+        public static double MakeChange(double amountTendered, double grandTotal)
+        {
+            double changeDue = amountTendered - grandTotal;
+            return changeDue;
         }
 
     }
