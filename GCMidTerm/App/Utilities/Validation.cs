@@ -8,7 +8,7 @@ namespace MidtermProject.Utilities
     class Validation
     {
 
-        //stop
+        //quit
         public static ConsoleKey YesorNo(string Message)
         {
             Console.WriteLine(Message);
@@ -37,5 +37,29 @@ namespace MidtermProject.Utilities
 
 
         }
+
+    
+
+
+        public static string remove(string input)
+        {
+            Regex blah = new Regex(@"^(\d)$");
+            Match doop = blah.Match(input);
+            while (!doop.Success)
+            {
+
+                Console.WriteLine("Enter Valid Number");
+
+            }
+            return input;
+
+
+
+        }
+
+
+
     }
+
+
 }
