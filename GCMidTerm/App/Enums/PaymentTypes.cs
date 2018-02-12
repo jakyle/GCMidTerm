@@ -3,8 +3,8 @@
     public enum PaymentTypes
     {
         cash = 1,
-        check,
         credit,
-
+        check,
+        
     }
 }

@@ -28,9 +28,9 @@ namespace MidtermProject.Classes
 
         public void Run()
         {
-            while (IsRunning)
+            while (IsRunning == true)
             {
-                Console.WriteLine("Welcome to the grand circus coffee app! what would you like to do?");
+                Console.WriteLine("Welcome to the Grand Circus Coffee App! May I take your order?");
                 if (Cart.Count < 1)
                 {
                     PartialChoices();
@@ -104,12 +104,12 @@ namespace MidtermProject.Classes
         private void AddItem() //need 2
         {
             DisplayStoreItems();
-            Console.WriteLine("Which coffee would you like to purchase? enter the number in between the \"[ ] \"");
+            Console.WriteLine("\nWhat would you like to order? Enter the number in between the \"[ ] \"");
             int input = int.Parse(Console.ReadLine()) - 1;
             string itemName = StoreMenu.Items[input].ProductName;
             double itemPrice = StoreMenu.Items[input].Price;
             // ------------------------------------------------------------------------------
-            Console.WriteLine("how many do you want?");
+            Console.WriteLine("How many would you like?");
             int quantity = int.Parse(Console.ReadLine());
 
             // this if statement figures out if the item already exist inside of the
@@ -128,6 +128,30 @@ namespace MidtermProject.Classes
             {
                 Cart.Add(new CoffeeObj(itemName, itemPrice * quantity, quantity));
             }
+
+            //ASK TO ADD ANOTHER ITEM
+            Console.WriteLine("\nWould you like to add another item? y/n");
+            string addAnotherItem = Console.ReadLine();
+            if (addAnotherItem == "y")
+            {
+                AddItem();
+            }
+                
+            else
+            {
+                Console.WriteLine("\nDoes this complete your order? y/n");
+                ViewCart();
+                string orderComplete = Console.ReadLine();
+
+                if (orderComplete == "y")
+                {
+                    Checkout();
+                }
+
+                else
+                    Console.WriteLine("Please make another selection");
+                    AddItem();
+            }
         }
         private void RemoveItem() //need one.
         {
@@ -140,7 +164,7 @@ namespace MidtermProject.Classes
         private void Checkout() //need one
         {
             GetTotalAmounts();
-            Console.WriteLine($"Your grand total due is: ${String.Format("{0:0.00}", GrandTotal)}");
+            Console.WriteLine($"\nYour grand total is: ${String.Format("{0:0.00}", GrandTotal)}");
             Console.WriteLine("How would you like to pay? ([1].Cash, [2].Credit, [3].Check)");
             PaymentTypes pmtType = (PaymentTypes)Enum.Parse(typeof(PaymentTypes), Console.ReadLine().ToLower());
             GetPaymentType(pmtType);
@@ -178,7 +202,7 @@ namespace MidtermProject.Classes
             CashAmount = double.Parse(Console.ReadLine());//setting variable for user's cash amount
             while (CashAmount < GrandTotal)
             {
-                Console.WriteLine("yo dude, we need more money!: ");
+                Console.WriteLine("Yo dude, we need more money! ");
                 CashAmount = double.Parse(Console.ReadLine());
             }
             UserPayment = new PmtCash(CashAmount); //making new cash object with cash class
@@ -204,7 +228,7 @@ namespace MidtermProject.Classes
             Console.WriteLine("Enter expiration date: mm/yy");
             DateTime expDate = DateTime.Parse(Console.ReadLine());
             //datetime
-            Console.WriteLine("Please input your first and last name: ");
+            Console.WriteLine("Please enter your first and last name: ");
             string userName = Console.ReadLine();
 
             UserPayment = new PmtCreditCard(GrandTotal, creditCardNumber, cvv, expDate, userName); //making new credit card object with credit card class
@@ -222,13 +246,13 @@ namespace MidtermProject.Classes
             UserPaidCheck = false;
             UserPaidCredit = false;
         }
-        private void Quit() //need implimented
+        private void Quit() 
         {
-            Console.WriteLine("would you like to close the program? (press Y to close, N to continue)");
+            Console.WriteLine("Would you like to close the program? y/n");
             ConsoleKey answer = Console.ReadKey().Key;
             if (answer == ConsoleKey.Y)
             {
-                Console.WriteLine("Thank you for shopping with us, have a good day!");
+                Console.WriteLine("\nThank you for coming, enjoy your coffee!");
                 IsRunning = false;
             }
         }

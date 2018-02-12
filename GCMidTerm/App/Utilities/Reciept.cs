@@ -12,10 +12,10 @@ namespace MidtermProject.Classes
         public static void Print(PmtCreditCard creditCard, List<IProduct> cart)
         {
             Console.WriteLine(new string('*', 25));
-            Console.WriteLine("\nHere is your reciept:\n");
+            Console.WriteLine("\nHere is your receipt:\n");
             //---------------------------------------------
             double subTotal = Register.GetSubTotal(cart);
-            Console.WriteLine($"subtotal: ${string.Format("{0:0.00}", subTotal)}");
+            Console.WriteLine($"Subtotal: ${string.Format("{0:0.00}", subTotal)}");
             //---------------------------------------------
             double tax = Register.CalculateSalesTax(subTotal, 0.06);
             Console.WriteLine($"Tax: ${string.Format("{0:0.00}", tax)}");
@@ -24,9 +24,9 @@ namespace MidtermProject.Classes
             Console.WriteLine($"Grand Total: ${string.Format("{0:0.00}", grandTotal)}\n");
             #region extrastuff
             //---------------------------------------------
-            Console.WriteLine($"CardNO: {creditCard.CCNumber}");
-            Console.WriteLine($"ExpirateionDate: {creditCard.Exp}");
-            Console.WriteLine($"SecurtyNumber: {creditCard.SecurityNum}\n");
+            Console.WriteLine($"Card Number: {creditCard.CCNumber}");
+            Console.WriteLine($"Expiration Date: {creditCard.Exp}");
+            Console.WriteLine($"Securty Number: {creditCard.SecurityNum}\n");
             Console.WriteLine("You've been hacked... wrecked.. easy...");
             //---------------------------------------------
             Console.WriteLine("\nThank you! Please come again!\n");
@@ -40,7 +40,7 @@ namespace MidtermProject.Classes
             Console.WriteLine("\nHere is your reciept:\n");
             //---------------------------------------------
             double subTotal = Register.GetSubTotal(cart);
-            Console.WriteLine($"subtotal: ${string.Format("{0:0.00}", subTotal)}");
+            Console.WriteLine($"Subtotal: ${string.Format("{0:0.00}", subTotal)}");
             //---------------------------------------------
             double tax = Register.CalculateSalesTax(subTotal, 0.06);
             Console.WriteLine($"Tax: ${string.Format("{0:0.00}", tax)}");
@@ -61,7 +61,7 @@ namespace MidtermProject.Classes
             Console.WriteLine("\nHere is your reciept:\n");
             //---------------------------------------------
             double subTotal = Register.GetSubTotal(cart);
-            Console.WriteLine($"subtotal: ${string.Format("{0:0.00}", subTotal)}");
+            Console.WriteLine($"Subtotal: ${string.Format("{0:0.00}", subTotal)}");
             //---------------------------------------------
             double tax = Register.CalculateSalesTax(subTotal, 0.06);
             Console.WriteLine($"Tax: ${string.Format("{0:0.00}", tax)}");
@@ -71,7 +71,7 @@ namespace MidtermProject.Classes
             //---------------------------------------------
             double changeDue = Register.MakeChange(amountTendered, grandTotal);
             Console.WriteLine("All paid in cash!\n");
-            Console.WriteLine($"your change is ${String.Format("{0:0.00}", changeDue)}");
+            Console.WriteLine($"Your change is ${String.Format("{0:0.00}", changeDue)}");
             //---------------------------------------------
             Console.WriteLine("\nThank you! Please come again!\n");
             Console.WriteLine(new string('*', 25));
