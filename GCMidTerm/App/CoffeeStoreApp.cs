@@ -102,7 +102,7 @@ namespace MidtermProject.Classes
                 acc++;
             }
         }
-        private void AddItem() //need 2
+        private void AddItem() //need implimented
         {
             DisplayStoreItems();
 
@@ -163,7 +163,7 @@ namespace MidtermProject.Classes
                 AddItem();
             }
         }
-        private void RemoveItem() //need one.
+        private void RemoveItem() //need implimented
         {
             ViewCart();
             Console.WriteLine("Type the name of the item you want to remove.");
@@ -218,7 +218,7 @@ namespace MidtermProject.Classes
             UserPayment = new PmtCash(CashAmount); //making new cash object with cash class
             UserPaidCash = true;
         }
-        private void PaymentCheck() //need 3
+        private void PaymentCheck() //needs implimented
         {
             Console.WriteLine("Enter account number: ");
             long acctNum = long.Parse(Console.ReadLine());
@@ -229,7 +229,7 @@ namespace MidtermProject.Classes
             UserPayment = new PmtCheck(GrandTotal, acctNum, routNum, checkNum); //making new check object from check class
             UserPaidCheck = true;
         }
-        private void PaymentCreditCard() //needs 4
+        private void PaymentCreditCard() //needs implimented
         {
             Console.WriteLine("Enter credit card number: ");
             long creditCardNumber = long.Parse(Console.ReadLine());
