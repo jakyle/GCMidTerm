@@ -4,6 +4,7 @@ using MidtermProject.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace MidtermProject.Classes
 {
@@ -84,9 +85,9 @@ namespace MidtermProject.Classes
         private void DisplayStoreItems()
         {
             int acc = 1;
-            foreach (CoffeeObj item in StoreMenu.Items)
+            foreach (CoffeeObj item in StoreMenu.Items) //getting menu items from list, displaying to console w/ price
             {
-                Console.WriteLine($"[{acc}]. {item.ProductName}\t\t\t\t\t\t${String.Format("{0:0.00}", item.Price)}");
+                Console.WriteLine($"[{acc}]. {item.ProductName}\t\t\t\t${String.Format("{0:0.00}", item.Price)}");
                 acc++;
             }
         }

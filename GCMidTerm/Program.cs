@@ -20,7 +20,7 @@ namespace MidtermProject
 
             catch (Exception)
             {
-                Console.WriteLine("Dead end. You're done here. Stick a fork in it.");
+                Console.WriteLine("Dead end. You're done here.");
             }
 
         }

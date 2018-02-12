@@ -31,7 +31,7 @@ namespace MidtermProject.Classes
         private void PullCoffeeNames()
         {
             StreamReader read = new StreamReader("../../App/Classes/TextFile1.txt");
-
+            //getting info from the text file
             string currentLine = read.ReadLine();
             CoffeeNames = new List<string>();
             while (currentLine != null)
