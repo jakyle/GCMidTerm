@@ -127,7 +127,7 @@ namespace MidtermProject.Classes
                 Cart.Add(new CoffeeObj(itemName, itemPrice * quantity, quantity));
             }
         }
-        private void RemoveItem()
+        private void RemoveItem() //need one.
         {
             ViewCart();
             Console.WriteLine("Type the name of the item you want to remove.");
@@ -135,7 +135,7 @@ namespace MidtermProject.Classes
             int itemLocation = Cart.FindIndex(item => item.ProductName == input);
             Cart.RemoveAt(itemLocation - 1);
         }
-        private void Checkout()
+        private void Checkout() //need one
         {
             GetTotalAmounts();
             Console.WriteLine($"Your grand total due is: ${String.Format("{0:0.00}", GrandTotal)}");
@@ -170,7 +170,7 @@ namespace MidtermProject.Classes
             GrandTotal = Register.GetGrandTotal(SubTotal, Tax);
             //--------------------------------------------
         }
-        private void PaymentCash()
+        private void PaymentCash() //need two
         {
             Console.WriteLine("Enter amount tendered: ");
             CashAmount = double.Parse(Console.ReadLine());//setting variable for user's cash amount
@@ -182,7 +182,7 @@ namespace MidtermProject.Classes
             UserPayment = new PmtCash(CashAmount); //making new cash object with cash class
             UserPaidCash = true;
         }
-        private void PaymentCheck()
+        private void PaymentCheck() //need 3
         {
             Console.WriteLine("Enter account number: ");
             long acctNum = long.Parse(Console.ReadLine());
@@ -193,7 +193,7 @@ namespace MidtermProject.Classes
             UserPayment = new PmtCheck(GrandTotal, acctNum, routNum, checkNum); //making new check object from check class
             UserPaidCheck = true;
         }
-        private void PaymentCreditCard()
+        private void PaymentCreditCard() //needs 4
         {
             Console.WriteLine("Enter credit card number: ");
             long creditCardNumber = long.Parse(Console.ReadLine());
@@ -220,7 +220,7 @@ namespace MidtermProject.Classes
             UserPaidCheck = false;
             UserPaidCredit = false;
         }
-        private void Quit()
+        private void Quit() //needs one
         {
             Console.WriteLine("would you like to close the program? (press Y to close, N to continue)");
             ConsoleKey answer = Console.ReadKey().Key;
