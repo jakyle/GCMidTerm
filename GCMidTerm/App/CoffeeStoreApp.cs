@@ -100,7 +100,7 @@ namespace MidtermProject.Classes
                 acc++;
             }
         }
-        private void AddItem()
+        private void AddItem() //need 2
         {
             DisplayStoreItems();
             Console.WriteLine("Which coffee would you like to purchase? enter the number in between the \"[ ] \"");
@@ -221,7 +221,7 @@ namespace MidtermProject.Classes
             UserPaidCheck = false;
             UserPaidCredit = false;
         }
-        private void Quit() //needs one
+        private void Quit() //need implimented
         {
             Console.WriteLine("would you like to close the program? (press Y to close, N to continue)");
             ConsoleKey answer = Console.ReadKey().Key;
