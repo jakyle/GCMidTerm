@@ -22,14 +22,14 @@ namespace MidtermProject.Utilities
         }
 
         //run
-        public static string AnothaOne(string input)
+        public static string StoreMenuValidation(string input)
         {
-            Regex blah = new Regex(@"^(stop|view menu|view cart|add item|remove item)$");
-            Match doop = blah.Match(input);
-            while (!doop.Success)
+            Regex storeValidateRegex = new Regex(@"^(stop|view menu|view cart|add item|remove item)$");
+            Match userInput = storeValidateRegex.Match(input);//users input goes here 
+            while (!userInput.Success)
             {
 
-                Console.WriteLine("Wrong");
+                Console.WriteLine("Please enter valid input.");
 
             }
             return input;

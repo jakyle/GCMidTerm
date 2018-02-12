@@ -37,7 +37,7 @@ namespace MidtermProject.Classes
                 }
                 else
                 {
-                    AppMenuChoices(); //calling menu options
+                    AppMenuChoices(); //calling menu options - view menu/quit
                 }
                 AppMenu input = (AppMenu)Enum.Parse(typeof(AppMenu), Console.ReadLine());
                 InputMenu(input);
@@ -47,7 +47,7 @@ namespace MidtermProject.Classes
             }
 
         }
-        private void AppMenuChoices()
+        private void AppMenuChoices() 
         {
             var menuList = Enum.GetValues(typeof(AppMenu)).Cast<AppMenu>();
             foreach (var item in menuList)
@@ -61,8 +61,9 @@ namespace MidtermProject.Classes
             Console.WriteLine(menuList[1]);
             Console.WriteLine(menuList[menuList.Count - 1]);
         }
-        private void InputMenu(AppMenu MenuChoice)
+        private void InputMenu(AppMenu MenuChoice) //input menu here 
         {
+            
             switch (MenuChoice)
             {
                 case AppMenu.viewcart:
