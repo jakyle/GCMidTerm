@@ -18,8 +18,7 @@ namespace MidtermProject.Utilities
                 Console.WriteLine($"Invalid input, {Message}");
                 Input = Console.ReadKey().Key;
             }
-            return Input;
-        }
+            return Input;        }
 
         //run
         public static string StoreMenuValidation(string input)
@@ -28,36 +27,19 @@ namespace MidtermProject.Utilities
             Match userInput = storeValidateRegex.Match(input);//users input goes here 
             while (!userInput.Success)
             {
-
                 Console.WriteLine("Please enter valid input.");
-
             }
             return input;
-
-
-
         }
-
-
         public static string remove(string input)
         {
             Regex blah = new Regex(@"^(\d)$");
             Match doop = blah.Match(input);
             while (!doop.Success)
             {
-
                 Console.WriteLine("Enter Valid Number");
-
             }
             return input;
-
-
-
         }
-
-
-
     }
-
-
 }

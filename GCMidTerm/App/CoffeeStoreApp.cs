@@ -47,12 +47,12 @@ namespace MidtermProject.Classes
             }
 
         }
-        private void AppMenuChoices() 
+        private void AppMenuChoices()
         {
             var menuList = Enum.GetValues(typeof(AppMenu)).Cast<AppMenu>();
             foreach (var item in menuList)
             {
-                Console.WriteLine(item);
+                Console.WriteLine($"[{(int)item}]. {item}"); //casting int to item so enum shows both the number value and the string name
             }
         }
         private void PartialChoices()
@@ -63,7 +63,7 @@ namespace MidtermProject.Classes
         }
         private void InputMenu(AppMenu MenuChoice) //input menu here 
         {
-            
+            //validation
             switch (MenuChoice)
             {
                 case AppMenu.viewcart:
