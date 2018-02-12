@@ -29,7 +29,7 @@ namespace MidtermProject.Classes
             Console.WriteLine($"Securty Number: {creditCard.SecurityNum}\n");
             Console.WriteLine("You've been hacked... wrecked.. easy...");
             //---------------------------------------------
-            Console.WriteLine("\nThank you! Please come again!\n");
+            Console.WriteLine("\nThank you! Enjoy your coffee!\n");
             #endregion extrastuff
             Console.WriteLine(new string('*', 25));
         }
@@ -51,7 +51,7 @@ namespace MidtermProject.Classes
             Console.WriteLine($"ACC-No: {check.AccountNumber}");
             Console.WriteLine($"ROUTING-No: {check.RoutingNumber}\n");
             //---------------------------------------------
-            Console.WriteLine("\nThank you! Please come again!\n");
+            Console.WriteLine("\nThank you! Enjoy your coffee!\n");
             Console.WriteLine(new string('*', 25));
         }
 
@@ -73,7 +73,7 @@ namespace MidtermProject.Classes
             Console.WriteLine("All paid in cash!\n");
             Console.WriteLine($"Your change is ${String.Format("{0:0.00}", changeDue)}");
             //---------------------------------------------
-            Console.WriteLine("\nThank you! Please come again!\n");
+            Console.WriteLine("\nThank you! Enjoy your coffee!\n");
             Console.WriteLine(new string('*', 25));
         }
     }

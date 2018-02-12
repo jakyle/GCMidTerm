@@ -28,8 +28,10 @@ namespace MidtermProject.Classes
 
         public void Run()
         {
-            while (IsRunning == true)
+            while (IsRunning)   
             {
+                //AppMenuChoices();
+
                 Console.WriteLine("Welcome to the Grand Circus Coffee App! May I take your order?");
                 if (Cart.Count < 1)
                 {
@@ -41,7 +43,7 @@ namespace MidtermProject.Classes
                 }
                 AppMenu input = (AppMenu)Enum.Parse(typeof(AppMenu), Console.ReadLine());
                 InputMenu(input);
-                Console.WriteLine("Press any key to continue...");
+                Console.WriteLine("Press any key to continue.");
                 Console.ReadKey();
                 Console.Clear();
             }
@@ -101,7 +103,7 @@ namespace MidtermProject.Classes
                 acc++;
             }
         }
-        private void AddItem() //need 2
+        private void AddItem() 
         {
             DisplayStoreItems();
             Console.WriteLine("\nWhat would you like to order? Enter the number in between the \"[ ] \"");
@@ -129,6 +131,7 @@ namespace MidtermProject.Classes
                 Cart.Add(new CoffeeObj(itemName, itemPrice * quantity, quantity));
             }
 
+            #region Add another item
             //ASK TO ADD ANOTHER ITEM
             Console.WriteLine("\nWould you like to add another item? y/n");
             string addAnotherItem = Console.ReadLine();
@@ -152,8 +155,9 @@ namespace MidtermProject.Classes
                     Console.WriteLine("Please make another selection");
                     AddItem();
             }
+            #endregion Add another item
         }
-        private void RemoveItem() //need one.
+        private void RemoveItem() 
         {
             ViewCart();
             Console.WriteLine("Type the name of the item you want to remove.");
@@ -161,7 +165,7 @@ namespace MidtermProject.Classes
             int itemLocation = Cart.FindIndex(item => item.ProductName == input);
             Cart.RemoveAt(itemLocation - 1);
         }
-        private void Checkout() //need one
+        private void Checkout() 
         {
             GetTotalAmounts();
             Console.WriteLine($"\nYour grand total is: ${String.Format("{0:0.00}", GrandTotal)}");
@@ -171,7 +175,7 @@ namespace MidtermProject.Classes
             Console.WriteLine();
             GetReciept();
             Cart.Clear();
-            Quit();
+            
         }
         private void GetPaymentType(PaymentTypes PmtType)  //PmtType is a temporary variable
         {
@@ -196,7 +200,8 @@ namespace MidtermProject.Classes
             GrandTotal = Register.GetGrandTotal(SubTotal, Tax);
             //--------------------------------------------
         }
-        private void PaymentCash() //need two
+        #region RecievePayment
+        private void PaymentCash() 
         {
             Console.WriteLine("Enter amount tendered: ");
             CashAmount = double.Parse(Console.ReadLine());//setting variable for user's cash amount
@@ -208,7 +213,7 @@ namespace MidtermProject.Classes
             UserPayment = new PmtCash(CashAmount); //making new cash object with cash class
             UserPaidCash = true;
         }
-        private void PaymentCheck() //need 3
+        private void PaymentCheck() 
         {
             Console.WriteLine("Enter account number: ");
             long acctNum = long.Parse(Console.ReadLine());
@@ -219,7 +224,7 @@ namespace MidtermProject.Classes
             UserPayment = new PmtCheck(GrandTotal, acctNum, routNum, checkNum); //making new check object from check class
             UserPaidCheck = true;
         }
-        private void PaymentCreditCard() //needs 4
+        private void PaymentCreditCard() 
         {
             Console.WriteLine("Enter credit card number: ");
             long creditCardNumber = long.Parse(Console.ReadLine());
@@ -234,6 +239,9 @@ namespace MidtermProject.Classes
             UserPayment = new PmtCreditCard(GrandTotal, creditCardNumber, cvv, expDate, userName); //making new credit card object with credit card class
             UserPaidCredit = true;
         }
+        #endregion RecievePayment
+
+        #region GetReciept
         private void GetReciept()
         {
             if (UserPaidCash)
@@ -245,16 +253,37 @@ namespace MidtermProject.Classes
             UserPaidCash = false;
             UserPaidCheck = false;
             UserPaidCredit = false;
+
+            Quit();
         }
+        #endregion GetReciept
+
         private void Quit() 
         {
             Console.WriteLine("Would you like to close the program? y/n");
-            ConsoleKey answer = Console.ReadKey().Key;
+            ConsoleKey answer = Console.ReadKey().Key ;
             if (answer == ConsoleKey.Y)
             {
-                Console.WriteLine("\nThank you for coming, enjoy your coffee!");
                 IsRunning = false;
+                
             }
+            else
+            {
+                IsRunning = true;
+            }
+            
+
         }
     }
 }
+
+
+
+
+//static void Main()
+//{
+//    // Input string.
+//    string mixedCase = "This is a MIXED case string.";
+
+//    // Call ToLower instance method, which returns a new copy.
+//    string lower = mixedCase.ToLower();

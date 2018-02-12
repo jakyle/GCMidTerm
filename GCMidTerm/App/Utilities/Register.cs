@@ -12,16 +12,15 @@ namespace MidtermProject.Classes
     static class Register
     {
         //register must do the following:
-        //tally each item chosen from the menu board 
+        //tally each item chosen from the menu board -- DONE
         //Give the subtotal for all items chosen -- DONE
         //calculate sales tax, and grand total -- DONE
         //Ask for payment type — cash, credit, or check -- DONE
         //For cash, ask for amount tendered and provide change -- DONE
-        //For check, get the check number -- DONE
         //For credit, get the credit card number, expiration, and CVV. -- DONE
-        //At the end, display a receipt with all items ordered, subtotal, grand total, and appropriate payment info.
-        //Return to the original menu for a new order.  
-        //Hint: you’ll want an array or ArrayList to keep track of what’s been ordered! -- ** WHERE IS THE ORDER THAT THE CUSTOMER PLACED? **
+        //At the end, display a receipt with all items ordered, subtotal, grand total, and appropriate payment info.  --DONE 
+        //Return to the original menu for a new order.  -- DONE
+        //array or ArrayList to keep track of what’s been ordered -- DONE
 
 
         //METHODS - calculate subtotal and grand total 

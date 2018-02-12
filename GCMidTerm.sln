@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27130.2003
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GCMidTerm", "GCMidTerm\GCMidTerm.csproj", "{59487730-97D2-4261-A7F1-5CAA877FB626}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MovieList", "..\Lab10-MovieList\Lab 10-MovieList\MovieList.csproj", "{A9225D39-B646-45A8-8DEC-1DC24DCE1A37}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,11 +17,15 @@ Global
 		{59487730-97D2-4261-A7F1-5CAA877FB626}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{59487730-97D2-4261-A7F1-5CAA877FB626}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{59487730-97D2-4261-A7F1-5CAA877FB626}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9225D39-B646-45A8-8DEC-1DC24DCE1A37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9225D39-B646-45A8-8DEC-1DC24DCE1A37}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9225D39-B646-45A8-8DEC-1DC24DCE1A37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9225D39-B646-45A8-8DEC-1DC24DCE1A37}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {0BFF5ECA-E706-4830-935A-7627644FFC5A}
+		SolutionGuid = {C18DB7EA-27CD-4A60-8630-192EDA0C5CA9}
 	EndGlobalSection
 EndGlobal
