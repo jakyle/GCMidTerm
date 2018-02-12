@@ -1,10 +1,12 @@
 ﻿using MidtermProject.Enums;
 //adding "using MidtermProject." so that we can access the new interfaces we created in the folder hierarchy
 using MidtermProject.Interfaces;
+using MidtermProject.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Configuration;
 
 namespace MidtermProject.Classes
 {
@@ -41,11 +43,10 @@ namespace MidtermProject.Classes
                 }
                 AppMenu input = (AppMenu)Enum.Parse(typeof(AppMenu), Console.ReadLine());
                 InputMenu(input);
-                Console.WriteLine("Press any key to continue...");
+                Console.WriteLine("Press any key to continue.");
                 Console.ReadKey();
                 Console.Clear();
             }
-
         }
         private void AppMenuChoices()
         {
@@ -104,13 +105,19 @@ namespace MidtermProject.Classes
         private void AddItem() //need 2
         {
             DisplayStoreItems();
-            Console.WriteLine("\nWhat would you like to order? Enter the number in between the \"[ ] \"");
-            int input = int.Parse(Console.ReadLine()) - 1;
+
+            Console.WriteLine("Which coffee would you like to purchase? enter the number in between the \"[ ] \"");
+            int input = int.Parse(Console.ReadLine()); //validate abc
+
+            //call validation
+            input = Validation.CoffeeValidate(input);  //the new input value is now being stored
+
             string itemName = StoreMenu.Items[input].ProductName;
             double itemPrice = StoreMenu.Items[input].Price;
             // ------------------------------------------------------------------------------
-            Console.WriteLine("How many would you like?");
-            int quantity = int.Parse(Console.ReadLine());
+            Console.WriteLine("how many do you want?");
+            int quantity = int.Parse(Console.ReadLine()); //validate number
+
 
             // this if statement figures out if the item already exist inside of the
             // the cart, if it does, it will update the price and the quantity
@@ -136,7 +143,7 @@ namespace MidtermProject.Classes
             {
                 AddItem();
             }
-                
+
             else
             {
                 Console.WriteLine("\nDoes this complete your order? y/n");
@@ -150,7 +157,7 @@ namespace MidtermProject.Classes
 
                 else
                     Console.WriteLine("Please make another selection");
-                    AddItem();
+                AddItem();
             }
         }
         private void RemoveItem() //need one.
@@ -246,7 +253,7 @@ namespace MidtermProject.Classes
             UserPaidCheck = false;
             UserPaidCredit = false;
         }
-        private void Quit() 
+        private void Quit()
         {
             Console.WriteLine("Would you like to close the program? y/n");
             ConsoleKey answer = Console.ReadKey().Key;
