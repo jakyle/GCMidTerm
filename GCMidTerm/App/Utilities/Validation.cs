@@ -56,5 +56,17 @@ namespace MidtermProject.Utilities
             }
             return x;
         }
+
+        public static string YesNo(string x)
+        {
+            while ((x != "y") && (x != "n")) //checking users input with coffee options "ask to add another item"
+            {
+                x = ""; //if it's wrong, x it loops back around and clears x
+
+                Console.WriteLine("Please enter either 'y' or 'n': ");
+                x = (Console.ReadLine());
+            }
+            return x;
+        }
     }
 }

@@ -136,9 +136,12 @@ namespace MidtermProject.Classes
                 Cart.Add(new CoffeeObj(itemName, itemPrice * quantity, quantity));
             }
 
-            //ASK TO ADD ANOTHER ITEM
+            //ASK TO ADD ANOTHER ITEM //
             Console.WriteLine("\nWould you like to add another item? y/n");
             string addAnotherItem = Console.ReadLine();
+
+            addAnotherItem = Validation.YesNo(addAnotherItem);
+
             if (addAnotherItem == "y")
             {
                 AddItem();
