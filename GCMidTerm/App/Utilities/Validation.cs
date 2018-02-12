@@ -38,8 +38,6 @@ namespace MidtermProject.Utilities
 
         }
 
-    
-
 
         public static string remove(string input)
         {
